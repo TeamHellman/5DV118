@@ -30,7 +30,7 @@ public class disassembler {
      opCode.put(0x17, "bgtzl");
 
 
-     int opcode= Integer.parseInt(binary.substring(0, 6));
+     int opcode= Integer.parseInt(binary.substring(0, 6), 2);
      String value = opCode.get(opcode);
      System.err.println(opcode + " = " + value);
 
