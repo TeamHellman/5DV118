@@ -11,7 +11,7 @@ public class lab1 {
      */
     public static void main(String[] args) {
 	       BufferedReader reader;
-	        // Read Feeds File
+	        // Read File
 	        try {
 	            File file = new File(args[0]);
 	            if (file.exists()) {
