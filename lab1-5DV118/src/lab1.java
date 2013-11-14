@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.math.BigInteger;
+
 
 
 public class lab1 {
@@ -24,6 +26,7 @@ public class lab1 {
 	                reader = new BufferedReader(new FileReader(file));
 	                String strLine;
 	                while ((strLine = reader.readLine()) != null) {
+
 	                	ArrayList<String> hexVal = new ArrayList<String>();
 	                	hexVal.add(strLine);
 	                	if(hexVal.get(0).substring(0, 2).equalsIgnoreCase("0x")) {
@@ -36,8 +39,11 @@ public class lab1 {
 	                		String binary = hexToBin(hex);
 	                		while(binary.length() < 32) {
 	                			binary = "0" + binary;
+
 	                		}
 	                		System.out.println(binary);
+	                		disassembler test = new disassembler();
+	                		test.hashmap(binary);
 	                	}
 
 	                }
