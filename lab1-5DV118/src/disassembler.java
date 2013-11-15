@@ -212,7 +212,7 @@ public class disassembler {
      rt.put(17, new opCode("bgezal", 'r'));
      rt.put(18, new opCode("bltall", 'r'));
      rt.put(19, new opCode("bgczall", 'r'));
-     
+
      HashMap<Integer, opCode> rs8  = new HashMap<Integer, opCode>();
      rs8.put(0, new opCode("bczf", 'x'));
      rs8.put(1, new opCode("bczt", 'x'));
@@ -233,19 +233,22 @@ public class disassembler {
 	    int id= Integer.parseInt(binary.substring(27, 32), 2);
 	    value = funct1.get(id).getOpcode();
 	}
-	if(opcode == 1){
+	else if(opcode == 01){
+
 	    int id= Integer.parseInt(binary.substring(12, 17), 2);
 	    value = funct1.get(id).getOpcode();
 	}
-	if(opcode == 0){
-	    int id= Integer.parseInt(binary.substring(27, 32), 2);
+	else if(opcode == 0){
+
+	    int id= Integer.parseInt(binary.substring(26, 32), 2);
+	    System.out.println(id + "aaaaaaaaa\n");
 	    value = funct2.get(id).getOpcode();
 	    if(id==1){
 		 id= Integer.parseInt(binary.substring(16, 16), 2);
 		 value = mov1.get(id).getOpcode();
 	    }
 	}
-	if((opcode >= 16) && (opcode <= 19)){
+	else if((opcode >= 16) && (opcode <= 19)){
 
 
 
@@ -270,6 +273,7 @@ public class disassembler {
 
 	}
 	else{
+	    System.out.println(opcode+ "z<\n");
 	    value = opCode.get(opcode).getOpcode();
 	}
 
