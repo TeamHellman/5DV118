@@ -155,7 +155,7 @@ public class disassembler {
 	HashMap<Integer, opCode> rs  = new HashMap<Integer, opCode>();
 	rs.put(0, new opCode("mfc", 'x'));
 	rs.put(2, new opCode("cfc", 'x'));
-	rs.put(4, new opCode("mrc", 'x'));
+	rs.put(4, new opCode("mtc", 'x'));
 	rs.put(6, new opCode("ctc", 'x'));
 	rs.put(32, new opCode("cop0", 'x'));
 	rs.put(33, new opCode("cop1s", 'r'));
@@ -230,16 +230,14 @@ public class disassembler {
 
 	int opcode= Integer.parseInt(binary.substring(0, 6), 2);
 	if(opcode == 28){
-	    int id= Integer.parseInt(binary.substring(27, 32), 2);
+	    int id= Integer.parseInt(binary.substring(26, 32), 2);
 	    value = funct1.get(id).getOpcode();
 	}
-	else if(opcode == 01){
-
-	    int id= Integer.parseInt(binary.substring(12, 17), 2);
+	else if(opcode == 1){
+	    int id= Integer.parseInt(binary.substring(12, 16), 2);
 	    value = funct1.get(id).getOpcode();
 	}
 	else if(opcode == 0){
-
 	    int id= Integer.parseInt(binary.substring(26, 32), 2);
 	    System.out.println(id + "aaaaaaaaa\n");
 	    value = funct2.get(id).getOpcode();
@@ -249,12 +247,9 @@ public class disassembler {
 	    }
 	}
 	else if((opcode >= 16) && (opcode <= 19)){
-
-
-
 	    int z = opcode -16;
-	    int id= Integer.parseInt(binary.substring(7, 12), 2);
-	    value = funct1.get(id).getOpcode();
+	    int id= Integer.parseInt(binary.substring(7, 11), 2);
+	    value = rs.get(id).getOpcode();
 
 	    if (id == 0 || id == 2 || id == 4 || id == 6) {
 		value = value + z;
@@ -270,14 +265,11 @@ public class disassembler {
 	    if(id == 17){
 
 	    }
-
 	}
 	else{
 	    System.out.println(opcode+ "z<\n");
 	    value = opCode.get(opcode).getOpcode();
 	}
-
 	System.err.println(opcode + " = " + value);
-
     }
 }
