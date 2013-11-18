@@ -1,7 +1,7 @@
 
 public class opCode {
     String opcode;
-    char type;
+    char type = ' ';
 
     public opCode(String opcode, char type){
 	this.type=type;

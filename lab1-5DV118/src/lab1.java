@@ -37,14 +37,12 @@ public class lab1 {
 							Long dividedByBig = intValue
 									/ (int) Math.pow(2, 26);
 							String hexe = Long.toHexString(dividedByBig);
-							//System.out.println(hexVal.get(0).substring(2));
-							//System.out.println(hexe);
 							String binary = hexToBin(hex);
 							while (binary.length() < 32) {
 								binary = "0" + binary;
 
 							}
-							System.out.println(binary);
+							//System.out.println(binary);
 							disassembler test = new disassembler();
 							test.hashmap(binary);
 						}
