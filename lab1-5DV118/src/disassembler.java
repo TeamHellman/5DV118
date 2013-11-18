@@ -273,12 +273,13 @@ public class disassembler {
 	System.err.print(value + " ");
 	if (func.getType() == 'r' || func.getType() == 'i') {
 	    int rsT = Integer.parseInt(binary.substring(6, 11), 2);
+
 	    int rtT = Integer.parseInt(binary.substring(11, 16), 2);
 	    String rsS = register.get(rsT);
 	    String rtS = register.get(rtT);
 	    if (func.getType() == 'r') {
-		int rdT = Integer.parseInt(binary.substring(16, 21), 2);
-	//	System.err.println("rd: " + rdT + " rs: " + rsT + " rt: " + rtT);
+
+		short rdT = (short)Integer.parseInt(binary.substring(16, 21), 2);
 		String rdS = register.get(rdT);
 		System.err.println(" " + rdS + " " + rsS + " " + rtS);
 	    }else if (func.getType() == 'i'){
