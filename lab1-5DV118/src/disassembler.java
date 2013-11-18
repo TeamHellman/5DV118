@@ -290,6 +290,7 @@ public class disassembler {
 	} else if(func.getType() == 'j') {
 	    int where = Integer.parseInt(binary.substring(6, 32), 2);
 	    System.err.println("" + where);
+
 	}else {
 	}
 	    System.err.print("\n");
