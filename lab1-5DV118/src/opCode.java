@@ -1,16 +1,16 @@
 
 public class opCode {
     String opcode;
-    char type = ' ';
+    char format = ' ';
 
-    public opCode(String opcode, char type){
-	this.type=type;
+    public opCode(String opcode, char format){
+	this.format=format;
 	this.opcode=opcode;
     }
     public String getOpcode(){
 	return opcode;
     }
     public char getType(){
-	return type;
+	return format;
     }
 }
