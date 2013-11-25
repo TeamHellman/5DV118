@@ -8,7 +8,7 @@ public class disassembler {
 		String mnemonicFormat = "";
 		String value = "null";
 		opCode func = null;
-		System.out.println(Long.toHexString(Long.parseLong(binary,2)));
+		//System.out.println(Long.toHexString(Long.parseLong(binary,2)));
 		
 		int opcode = Integer.parseInt(binary.substring(0, 6), 2);
 		if (opcode == 28) {
@@ -55,15 +55,27 @@ public class disassembler {
 
 		MIPS.setFormat(func.getType());
 
-
-		if (func.getType() == 'r' || func.getType() == 'i') {
+		if(value.equalsIgnoreCase("syscall")) {
+			mnemonicFormat = value;
+		} else if (value.equalsIgnoreCase("jr")) {
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
-
+			String rsS = mapping.register.get(rsT);
+			mnemonicFormat = value + " " + rsS;
+		} else if (value.equalsIgnoreCase("mfhi")) {
+			int rdT = Integer.parseInt(binary.substring(16, 21), 2);
+			String rdS = mapping.register.get(rdT);
+			mnemonicFormat = value + " " + rdS;
+		} else if (value.equalsIgnoreCase("mthi")) {
+			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
+			String rsS = mapping.register.get(rsT);
+			mnemonicFormat = value + " " + rsS;
+		} else if (func.getType() == 'r' || func.getType() == 'i') {
+		
+			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
 			int rtT = Integer.parseInt(binary.substring(11, 16), 2);
 			String rsS = mapping.register.get(rsT);
 			String rtS = mapping.register.get(rtT);
 			if (func.getType() == 'r') {
-
 				short rdT = (short)Integer.parseInt(binary.substring(16, 21), 2);
 				String rdS = mapping.register.get(rdT);
 				mnemonicFormat = value + " " +  rdS + " " + rsS + " " + rtS;
@@ -78,6 +90,7 @@ public class disassembler {
 
 		}
 		MIPS.setMnemonicFormat(mnemonicFormat);
+		System.out.println(Long.toHexString(Long.parseLong(binary,2)) + " " +  MIPS.getMnemonicFormat());
 	}
 
 }
