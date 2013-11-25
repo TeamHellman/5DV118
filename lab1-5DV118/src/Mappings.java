@@ -5,8 +5,8 @@ public class Mappings {
 	public HashMap<Integer, opCode> opCode = new HashMap<Integer, opCode>();
 	public HashMap<Integer, opCode> funct1 = new HashMap<Integer, opCode>();
 	public HashMap<Integer, opCode> funct2 = new HashMap<Integer, opCode>();
-	public 	HashMap<Integer, opCode> funct3 = new HashMap<Integer, opCode>();
-	public 	HashMap<Integer, opCode> funct4 = new HashMap<Integer, opCode>();
+	public HashMap<Integer, opCode> funct3 = new HashMap<Integer, opCode>();
+	public HashMap<Integer, opCode> funct4 = new HashMap<Integer, opCode>();
 	public HashMap<Integer, opCode> rs = new HashMap<Integer, opCode>();
 	public HashMap<Integer, String> register = new HashMap<Integer, String>();
 	public HashMap<Integer, opCode> rt = new HashMap<Integer, opCode>();

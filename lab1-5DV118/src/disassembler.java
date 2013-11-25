@@ -1,10 +1,10 @@
 
 public class disassembler {
 
-	public void parser(String binary) {
+	public void parser(String binary, Instruction MIPS ) {
 
 		Mappings mapping = new Mappings();
-		Instruction MIPS = new Instruction();
+	
 		String mnemonicFormat = "";
 		String value = "null";
 		opCode func = null;
@@ -52,7 +52,7 @@ public class disassembler {
 			func = mapping.opCode.get(opcode);	    
 			value = mapping.opCode.get(opcode).getOpcode();
 		}
-
+		
 		MIPS.setFormat(func.getType());
 
 		if(value.equalsIgnoreCase("syscall")) {
@@ -89,8 +89,12 @@ public class disassembler {
 			mnemonicFormat = value + " " + where; 
 
 		}
+		if(value == null){
+			mnemonicFormat = "Instruction not known"; 
+		}
+		
 		MIPS.setMnemonicFormat(mnemonicFormat);
-		System.out.println(Long.toHexString(Long.parseLong(binary,2)) + " " +  MIPS.getMnemonicFormat());
+	
 	}
 
 }
