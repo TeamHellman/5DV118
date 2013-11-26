@@ -44,30 +44,30 @@ public class Mappings {
 		opCode.put(0x1d, new opCode("1d", 'r'));
 		opCode.put(0x1e, new opCode("1e", 'r'));
 		opCode.put(0x1f, new opCode("1f", 'r'));
-		opCode.put(0x20, new opCode("lb", 'r'));
-		opCode.put(0x21, new opCode("lh", 'r'));
-		opCode.put(0x22, new opCode("lwl", 'r'));
-		opCode.put(0x23, new opCode("lw", 'r'));
-		opCode.put(0x24, new opCode("lbu", 'r'));
-		opCode.put(0x25, new opCode("lhu", 'r'));
-		opCode.put(0x26, new opCode("lwr", 'r'));
-		opCode.put(0x28, new opCode("sb", 'r'));
-		opCode.put(0x29, new opCode("sh", 'r'));
-		opCode.put(0x2a, new opCode("swl", 'r'));
-		opCode.put(0x2b, new opCode("sw", 'r'));
-		opCode.put(0x2e, new opCode("swr", 'r'));
-		opCode.put(0x2f, new opCode("cache", 'r'));
-		opCode.put(0x30, new opCode("ll", 'r'));
-		opCode.put(0x31, new opCode("lwc1", 'r'));
-		opCode.put(0x32, new opCode("lwc2", 'r'));
-		opCode.put(0x33, new opCode("pref", 'r'));
-		opCode.put(0x35, new opCode("ldc1", 'r'));
-		opCode.put(0x36, new opCode("ldc2", 'r'));
-		opCode.put(0x38, new opCode("sc", 'r'));
-		opCode.put(0x39, new opCode("swc1", 'r'));
-		opCode.put(0x3a, new opCode("swc2", 'r'));
-		opCode.put(0x3d, new opCode("sdc1", 'r'));
-		opCode.put(0x3e, new opCode("sdc2", 'r'));
+		opCode.put(0x20, new opCode("lb", 'i'));
+		opCode.put(0x21, new opCode("lh", 'i'));
+		opCode.put(0x22, new opCode("lwl", 'i'));
+		opCode.put(0x23, new opCode("lw", 'i'));
+		opCode.put(0x24, new opCode("lbu", 'i'));
+		opCode.put(0x25, new opCode("lhu", 'i'));
+		opCode.put(0x26, new opCode("lwr", 'i'));
+		opCode.put(0x28, new opCode("sb", 'i'));
+		opCode.put(0x29, new opCode("sh", 'i'));
+		opCode.put(0x2a, new opCode("swl", 'i'));
+		opCode.put(0x2b, new opCode("sw", 'i'));
+		opCode.put(0x2e, new opCode("swr", 'i'));
+		opCode.put(0x2f, new opCode("cache", 'i'));
+		opCode.put(0x30, new opCode("ll", 'i'));
+		opCode.put(0x31, new opCode("lwc1", 'i'));
+		opCode.put(0x32, new opCode("lwc2", 'i'));
+		opCode.put(0x33, new opCode("pref", 'i'));
+		opCode.put(0x35, new opCode("ldc1", 'i'));
+		opCode.put(0x36, new opCode("ldc2", 'i'));
+		opCode.put(0x38, new opCode("sc", 'i'));
+		opCode.put(0x39, new opCode("swc1", 'i'));
+		opCode.put(0x3a, new opCode("swc2", 'i'));
+		opCode.put(0x3d, new opCode("sdc1", 'i'));
+		opCode.put(0x3e, new opCode("sdc2", 'i'));
 
 		
 		funct1.put(0, new opCode("madd", 'r'));
@@ -160,11 +160,11 @@ public class Mappings {
 		funct4.put(31, new opCode("deret", 'r'));
 
 		
-		rs.put(0, new opCode("mfc", 'x'));
-		rs.put(2, new opCode("cfc", 'x'));
-		rs.put(4, new opCode("mtc", 'x'));
-		rs.put(6, new opCode("ctc", 'x'));
-		rs.put(32, new opCode("cop0", 'x'));
+		rs.put(0, new opCode("mfc", 'f'));
+		rs.put(2, new opCode("cfc", 'f'));
+		rs.put(4, new opCode("mtc", 'f'));
+		rs.put(6, new opCode("ctc", 'f'));
+		rs.put(32, new opCode("cop0", 'f'));
 		rs.put(33, new opCode("cop1s", 'r'));
 		rs.put(17, new opCode("cop1d", 'r'));
 
@@ -203,20 +203,20 @@ public class Mappings {
 		register.put(31, "$ra");
 
 		
-		rt.put(0, new opCode("bltz", 'x'));
-		rt.put(1, new opCode("bgez", 'x'));
-		rt.put(2, new opCode("bitzl", 'x'));
-		rt.put(3, new opCode("bgezl", 'x'));
-		rt.put(8, new opCode("tgei", 'x'));
-		rt.put(9, new opCode("tgeiu", 'r'));
-		rt.put(10, new opCode("tlti", 'r'));
-		rt.put(11, new opCode("tltiu", 'r'));
-		rt.put(12, new opCode("tegi", 'r'));
-		rt.put(14, new opCode("tnei", 'r'));
-		rt.put(16, new opCode("bltzal", 'r'));
-		rt.put(17, new opCode("bgezal", 'r'));
-		rt.put(18, new opCode("bltall", 'r'));
-		rt.put(19, new opCode("bgczall", 'r'));
+		rt.put(0, new opCode("bltz", 'i'));
+		rt.put(1, new opCode("bgez", 'i'));
+		rt.put(2, new opCode("bltzl", 'i'));
+		rt.put(3, new opCode("bgezl", 'i'));
+		rt.put(8, new opCode("tgei", 'i'));
+		rt.put(9, new opCode("tgeiu", 'i'));
+		rt.put(10, new opCode("tlti", 'i'));
+		rt.put(11, new opCode("tltiu", 'i'));
+		rt.put(12, new opCode("tegi", 'i'));
+		rt.put(14, new opCode("tnei", 'i'));
+		rt.put(16, new opCode("bltzal", 'i'));
+		rt.put(17, new opCode("bgezal", 'i'));
+		rt.put(18, new opCode("bltzall", 'i'));
+		rt.put(19, new opCode("bgczall", 'i'));
 
 		
 		rs8.put(0, new opCode("bczf", 'x'));
