@@ -95,12 +95,17 @@ public class disassembler {
 				int rdT = (int)Integer.parseInt(binary.substring(16, 21), 2);
 				String rdS = mapping.register.get(rdT);
 				mnemonicFormat = value + " " +  rdS + " " + rsS + " " + rtS;
-				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
 				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
+				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
 				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(16, 21), 2).toString(16);
+				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(21, 26), 2).toString(16);
+				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(26, 32), 2).toString(16);
 			} else if (func.getType() == 'i'){
 				int immediate = Integer.parseInt(binary.substring(16, 32), 2);
 				mnemonicFormat = value + " " + rsS + " " + rtS + " " + immediate;
+				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
+				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
+				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(16, 21), 2).toString(16);
 			}
 
 		} else if(func.getType() == 'j') {
