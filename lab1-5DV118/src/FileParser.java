@@ -31,6 +31,18 @@ public class FileParser {
 							}			
 							disassembler test = new disassembler();
 							test.parser(binary, MIPS);
+						} 
+						else {
+							Instruction MIPS = new Instruction();
+							instructions.add(MIPS);
+							String binary = new BigInteger(strLine).toString(2);
+							String hex = new BigInteger(strLine).toString(16);
+							MIPS.setHex("0x" + hex);
+							while (binary.length() < 32) {
+								binary = "0" + binary;
+							}
+							disassembler test = new disassembler();
+							test.parser(binary, MIPS);
 						}
 					}
 				}
@@ -49,7 +61,7 @@ public class FileParser {
 
 }
 	static String hexToBin(String s) {
-	return new BigInteger(s, 16).toString(2);
+		return new BigInteger(s, 16).toString(2);
 	}
 
 }
