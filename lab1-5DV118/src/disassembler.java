@@ -76,7 +76,7 @@ public class disassembler {
 			String rsS = mapping.register.get(rsT);
 			String rtS = mapping.register.get(rtT);
 			if (func.getType() == 'r') {
-				short rdT = (short)Integer.parseInt(binary.substring(16, 21), 2);
+				int rdT = (int)Integer.parseInt(binary.substring(16, 21), 2);
 				String rdS = mapping.register.get(rdT);
 				mnemonicFormat = value + " " +  rdS + " " + rsS + " " + rtS;
 			} else if (func.getType() == 'i'){
