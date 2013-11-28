@@ -112,9 +112,9 @@ public class disassembler {
 			mnemonicFormat = "Instruction not known"; 
 		}
 		hexDecompose = hexDecompose + " ]";
-	
+	 
 		MIPS.setMnemonicFormat(mnemonicFormat);
-	
+		MIPS.setHexDecomposed(hexDecompose);
 	}
 
 }

@@ -2,8 +2,16 @@
 public class Instruction {
 	public String hex;
 	public String dec;
+	public String hexDecomposed;
 	public String mnemonicFormat;
 	public char format;
+	
+	public String getHexDecomposed() {
+		return hexDecomposed;
+	}
+	public void setHexDecomposed(String hexDecomposed) {
+		this.hexDecomposed = hexDecomposed;
+	}
 	public String getHex() {
 		return hex;
 	}

@@ -54,7 +54,7 @@ public class FileParser {
 		
 		// Print
 		for(int i=0; i < instructions.size(); i++){
-			System.out.println("HEX: " + instructions.get(i).getHex() + " Format: " + instructions.get(i).getFormat() + " Mnemonic: " + instructions.get(i).getMnemonicFormat());			
+			System.out.println("HEX: " + instructions.get(i).getHex() + " HEX Decomposed: " + instructions.get(i).getHexDecomposed() + " Format: " + instructions.get(i).getFormat() + " Mnemonic: " + instructions.get(i).getMnemonicFormat());			
 		}
 
 	
