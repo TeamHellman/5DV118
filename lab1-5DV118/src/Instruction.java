@@ -3,9 +3,16 @@ public class Instruction {
 	public String hex;
 	public String dec;
 	public String hexDecomposed;
+	public String decDecomposed;
 	public String mnemonicFormat;
 	public char format;
 	
+	public String getDecDecomposed() {
+		return decDecomposed;
+	}
+	public void setDecDecomposed(String decDecomposed) {
+		this.decDecomposed = decDecomposed;
+	}
 	public String getHexDecomposed() {
 		return hexDecomposed;
 	}
