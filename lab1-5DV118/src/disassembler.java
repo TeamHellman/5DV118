@@ -138,7 +138,6 @@ public class disassembler {
 		}
 		hexDecompose = hexDecompose + "]";
 		decDecompose = decDecompose + "]";
-		System.err.println(decDecompose);
 		MIPS.setMnemonicFormat(mnemonicFormat);
 		MIPS.setHexDecomposed(hexDecompose);
 		MIPS.setDecDecomposed(decDecompose);
