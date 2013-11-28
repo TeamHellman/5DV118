@@ -11,21 +11,22 @@ public class disassembler {
 		String value = "null";
 		opCode func = null;
 		String hexDecompose = null;
+		int id = 0;
 		//System.out.println(Long.toHexString(Long.parseLong(binary,2)));
 		
 		int opcode = Integer.parseInt(binary.substring(0, 6), 2);
 		if (opcode == 28) {
-			int id = Integer.parseInt(binary.substring(26, 32), 2);
+			id = Integer.parseInt(binary.substring(26, 32), 2);
 		
 			func = mapping.funct1.get(id);
 			value = func.getOpcode();
 		} else if (opcode == 1) {
-			int id = Integer.parseInt(binary.substring(12, 16), 2);
+			id = Integer.parseInt(binary.substring(12, 16), 2);
 		
 			func = mapping.funct1.get(id);
 			value = func.getOpcode();
 		} else if (opcode == 0) {
-			int id = Integer.parseInt(binary.substring(26, 32), 2);
+			id = Integer.parseInt(binary.substring(26, 32), 2);
 	
 			func = mapping.funct2.get(id);
 			value = func.getOpcode();
@@ -37,7 +38,7 @@ public class disassembler {
 			}
 		} else if ((opcode >= 16) && (opcode <= 19)) {
 			int z = opcode - 16;
-			int id = Integer.parseInt(binary.substring(7, 11), 2);
+			id = Integer.parseInt(binary.substring(7, 11), 2);
 	
 			func = mapping.rs.get(id);
 			value = func.getOpcode();
@@ -111,7 +112,7 @@ public class disassembler {
 		if(value == null){
 			mnemonicFormat = "Instruction not known"; 
 		}
-		hexDecompose = hexDecompose + "]";
+		hexDecompose = hexDecompose + " " + id + "]";
 	 
 		MIPS.setMnemonicFormat(mnemonicFormat);
 		MIPS.setHexDecomposed(hexDecompose);
