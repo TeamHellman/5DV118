@@ -99,8 +99,12 @@ public class disassembler {
 				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
 				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
 				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(16, 21), 2).toString(16);
+				hexDecompose = hexDecompose + " " + id;
 			} else if (func.getType() == 'i'){
 				int immediate = Integer.parseInt(binary.substring(16, 32), 2);
+				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
+				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
+				hexDecompose = hexDecompose + " " + immediate;
 				mnemonicFormat = value + " " + rsS + " " + rtS + " " + immediate;
 			}
 
@@ -112,7 +116,7 @@ public class disassembler {
 		if(value == null){
 			mnemonicFormat = "Instruction not known"; 
 		}
-		hexDecompose = hexDecompose + " " + id + "]";
+		hexDecompose = hexDecompose + "]";
 	 
 		MIPS.setMnemonicFormat(mnemonicFormat);
 		MIPS.setHexDecomposed(hexDecompose);
