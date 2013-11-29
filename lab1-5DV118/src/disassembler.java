@@ -67,9 +67,7 @@ public class disassembler {
 		hexDecompose = "[0x" + new BigInteger(binary.substring(0, 6), 2).toString(16);
 		MIPS.setFormat(func.getType());
 
-		if(Integer.parseInt(binary, 2) == 0) {
-			
-		} else if (func.getType() == 'r' || func.getType() == 'i') {
+		if (func.getType() == 'r' || func.getType() == 'i') {
 
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
 			int rtT = Integer.parseInt(binary.substring(11, 16), 2);
@@ -95,10 +93,10 @@ public class disassembler {
 				decDecompose = decDecompose + " " + new BigInteger(binary.substring(26, 32), 2).toString(10);
 			} else if (func.getType() == 'i'){
 				int immediate = Integer.parseInt(binary.substring(16, 32), 2);
+				mnemonicFormat = value + " " + rsS + " " + rtS + " " + immediate;
 				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
 				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
 				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(16, 32), 2).toString(16);
-				mnemonicFormat = value + " " + rsS + " " + rtS + " " + immediate;
 
 				decDecompose = "[" + new BigInteger(binary.substring(0, 6), 2).toString(10);
 				decDecompose = decDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(10);
