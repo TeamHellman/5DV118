@@ -1,12 +1,19 @@
 
 public class Instruction {
+	public String input;
 	public String hex;
 	public String dec;
 	public String hexDecomposed;
 	public String decDecomposed;
 	public String mnemonicFormat;
 	public char format;
-	
+
+	public String getInput() {
+		return input;
+	}
+	public void setInput(String input){
+		this.input = input;
+	}
 	public String getDecDecomposed() {
 		return decDecomposed;
 	}
@@ -18,12 +25,6 @@ public class Instruction {
 	}
 	public void setHexDecomposed(String hexDecomposed) {
 		this.hexDecomposed = hexDecomposed;
-	}
-	public String getHex() {
-		return hex;
-	}
-	public void setHex(String hex) {
-		this.hex = hex;
 	}
 	public String getDec() {
 		return dec;

@@ -18,26 +18,26 @@ public class FileParser {
 				String strLine;
 				while ((strLine = reader.readLine()) != null) {
 					if (strLine.length() > 0) {
-						
+
 						if (strLine.substring(0, 2)
 								.equalsIgnoreCase("0x")) {
 							Instruction MIPS = new Instruction();
-							MIPS.setHex(strLine);
 							instructions.add(MIPS);
 							String hex = strLine.substring(2);
 							String binary = hexToBin(hex);
+							MIPS.setInput(strLine);
 							while (binary.length() < 32) {
 								binary = "0" + binary;
-							}			
+							}
 							disassembler test = new disassembler();
 							test.parser(binary, MIPS);
-						} 
+						}
 						else {
 							Instruction MIPS = new Instruction();
 							instructions.add(MIPS);
 							String binary = new BigInteger(strLine).toString(2);
 							String hex = new BigInteger(strLine).toString(16);
-							MIPS.setHex("0x" + hex);
+							MIPS.setInput(strLine);
 							while (binary.length() < 32) {
 								binary = "0" + binary;
 							}
@@ -47,17 +47,19 @@ public class FileParser {
 					}
 				}
 				reader.close();
-			}	
+			}
 		} catch (IOException e) {
 			System.err.println("Error: " + e.getMessage());
 		}
-		
+
+		System.out.println(String.format("%s%16s%19s%22s%14s", "Input", "Format", "HEX Decomposed", "DEC Decomposed", "Mnemonic" ));
 		// Print
 		for(int i=0; i < instructions.size(); i++){
-			System.out.println("HEX: " + instructions.get(i).getHex() + " HEX Decomposed: " + instructions.get(i).getHexDecomposed() + " DEC Decomposed: " + instructions.get(i).getDecDecomposed() + " Format: " + instructions.get(i).getFormat() + " Mnemonic: " + instructions.get(i).getMnemonicFormat());			
+			//System.out.println("Input: " + instructions.get(i).getInput() + " HEX Decomposed: " + instructions.get(i).getHexDecomposed() + " DEC Decomposed: " + instructions.get(i).getDecDecomposed() + " Format: " + instructions.get(i).getFormat() + " Mnemonic: " + instructions.get(i).getMnemonicFormat());
+			System.out.println(String.format("%s%6s%27s%21s%22s", instructions.get(i).getInput(), instructions.get(i).getFormat(), instructions.get(i).getHexDecomposed(), instructions.get(i).getDecDecomposed(), instructions.get(i).getMnemonicFormat()));
 		}
 
-	
+
 
 }
 	static String hexToBin(String s) {

@@ -14,7 +14,7 @@ public class Mappings {
 	public HashMap<Integer, opCode> mov1 = new HashMap<Integer, opCode>();
 	public HashMap<Integer, opCode> mov2 = new HashMap<Integer, opCode>();
 	public Mappings(){
-		
+
 		opCode.put(0x02, new opCode("00", 'r'));
 		opCode.put(0x02, new opCode("01", 'r'));
 		opCode.put(0x02, new opCode("j", 'j'));
@@ -69,7 +69,7 @@ public class Mappings {
 		opCode.put(0x3d, new opCode("sdc1", 'i'));
 		opCode.put(0x3e, new opCode("sdc2", 'i'));
 
-		
+
 		funct1.put(0, new opCode("madd", 'r'));
 		funct1.put(1, new opCode("maddu", 'r'));
 		funct1.put(2, new opCode("mul", 'r'));
@@ -77,24 +77,24 @@ public class Mappings {
 		funct1.put(33, new opCode("clz", 'r'));
 		funct1.put(34, new opCode("clo", 'r'));
 
-	
+
 		funct2.put(0, new opCode("sll", 'r'));
 		funct2.put(2, new opCode("slr", 'r'));
 		funct2.put(3, new opCode("sra", 'r'));
 		funct2.put(4, new opCode("sllv", 'r'));
 		funct2.put(6, new opCode("srlv", 'r'));
 		funct2.put(7, new opCode("srav", 'r'));
-		funct2.put(8, new opCode("jr", 'r'));
+		funct2.put(8, new opCode("jr", 'n'));
 		funct2.put(9, new opCode("jalr", 'r'));
 		funct2.put(10, new opCode("movz", 'r'));
 		funct2.put(11, new opCode("movn", 'r'));
-		funct2.put(12, new opCode("syscall", 'r'));
+		funct2.put(12, new opCode("syscall", 'l'));
 		funct2.put(13, new opCode("break", 'r'));
 		funct2.put(15, new opCode("sync", 'r'));
-		funct2.put(16, new opCode("mfhi", 'r'));
-		funct2.put(17, new opCode("mthi", 'r'));
-		funct2.put(18, new opCode("mflo", 'r'));
-		funct2.put(19, new opCode("mtlo", 'r'));
+		funct2.put(16, new opCode("mfhi", 'm'));
+		funct2.put(17, new opCode("mthi", 'n'));
+		funct2.put(18, new opCode("mflo", 'm'));
+		funct2.put(19, new opCode("mtlo", 'n'));
 		funct2.put(24, new opCode("mult", 'r'));
 		funct2.put(25, new opCode("multu", 'r'));
 		funct2.put(26, new opCode("div", 'r'));
@@ -116,7 +116,7 @@ public class Mappings {
 		funct2.put(52, new opCode("teq", 'r'));
 		funct2.put(54, new opCode("tne", 'r'));
 
-	
+
 		funct3.put(0, new opCode("add.", 'r'));
 		funct3.put(1, new opCode("sub.", 'r'));
 		funct3.put(2, new opCode("mul.", 'r'));
@@ -151,7 +151,7 @@ public class Mappings {
 		funct3.put(62, new opCode("c.le.", 'r'));
 		funct3.put(63, new opCode("c.ngt.", 'r'));
 
-	
+
 		funct4.put(1, new opCode("tlbr", 'r'));
 		funct4.put(2, new opCode("tlbwi", 'r'));
 		funct4.put(6, new opCode("tlbwr", 'r'));
@@ -159,7 +159,7 @@ public class Mappings {
 		funct4.put(24, new opCode("eret", 'r'));
 		funct4.put(31, new opCode("deret", 'r'));
 
-		
+
 		rs.put(0, new opCode("mfc", 'f'));
 		rs.put(2, new opCode("cfc", 'f'));
 		rs.put(4, new opCode("mtc", 'f'));
@@ -168,7 +168,7 @@ public class Mappings {
 		rs.put(33, new opCode("cop1s", 'r'));
 		rs.put(17, new opCode("cop1d", 'r'));
 
-		
+
 		register.put(0, "$zero");
 		register.put(1, "$at");
 		register.put(2, "$v0");
@@ -202,7 +202,7 @@ public class Mappings {
 		register.put(30, "$fp");
 		register.put(31, "$ra");
 
-		
+
 		rt.put(0, new opCode("bltz", 'i'));
 		rt.put(1, new opCode("bgez", 'i'));
 		rt.put(2, new opCode("bltzl", 'i'));
@@ -218,17 +218,17 @@ public class Mappings {
 		rt.put(18, new opCode("bltzall", 'i'));
 		rt.put(19, new opCode("bgczall", 'i'));
 
-		
+
 		rs8.put(0, new opCode("bczf", 'x'));
 		rs8.put(1, new opCode("bczt", 'x'));
 		rs8.put(2, new opCode("bczfl", 'x'));
 		rs8.put(3, new opCode("bcztl", 'x'));
 
-		
+
 		mov1.put(0, new opCode("movf", 'x'));
 		mov1.put(1, new opCode("movt", 'x'));
 
-	
+
 		mov2.put(0, new opCode("movf.", 'x'));
 		mov2.put(1, new opCode("movt.", 'x'));
 	}
