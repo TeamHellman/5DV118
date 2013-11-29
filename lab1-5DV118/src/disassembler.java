@@ -258,10 +258,18 @@ public class disassembler {
 		value = value.replaceAll("z", String.valueOf(z));
 	    }
 	    if (id == 16) {
-
+	    	if(z == 0) {
+	    		value = funct4.get(id).getOpcode();
+	    	} else {
+	    		value = funct3.get(id).getOpcode();
+	    		value.concat("s");
+	    	}
 	    }
 	    if (id == 17) {
-
+	    	if(z == 1) {
+	    		value = funct3.get(id).getOpcode();
+	    		value.concat("d");
+	    	}
 	    }
 	} else {
 	    func = opCode.get(opcode);
@@ -279,8 +287,9 @@ public class disassembler {
 	    String rtS = register.get(rtT);
 	    if (func.getType() == 'r') {
 
-		short rdT = (short)Integer.parseInt(binary.substring(16, 21), 2);
+		int rdT = Integer.parseInt(binary.substring(16, 21), 2);
 		String rdS = register.get(rdT);
+		System.out.println("\nKOLLA: " + rdT + rsT + rtT);
 		System.err.println(" " + rdS + " " + rsS + " " + rtS);
 	    }else if (func.getType() == 'i'){
 		int immediate = Integer.parseInt(binary.substring(16, 32), 2);
@@ -293,7 +302,6 @@ public class disassembler {
 
 	}else {
 	}
-	    System.err.print("\n");
+//	    System.err.print("\n");
 	}
-
-    }
+}
