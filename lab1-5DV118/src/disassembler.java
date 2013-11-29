@@ -67,30 +67,8 @@ public class disassembler {
 		hexDecompose = "[0x" + new BigInteger(binary.substring(0, 6), 2).toString(16);
 		MIPS.setFormat(func.getType());
 
-		if(value.equalsIgnoreCase("syscall")) {
-			mnemonicFormat = value;
-//		} else if (value.equalsIgnoreCase("jr")) {
-//			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
-//
-//			String rsS = mapping.register.get(rsT);
-//			mnemonicFormat = value + " " + rsS;
-//			hexDecompose = hexDecompose+" " + new BigInteger(binary.substring(6, 11), 2).toString(16);
-//			decDecompose = "[" + new BigInteger(binary.substring(0, 6), 2).toString(10);
-//			decDecompose = decDecompose + " " + new BigInteger(binary.substring(6, 32), 2).toString(10);
-//		} else if (value.equalsIgnoreCase("mfhi")) {
-//			int rdT = Integer.parseInt(binary.substring(16, 21), 2);
-//			hexDecompose = hexDecompose +" " + new BigInteger(binary.substring(16, 21), 2).toString(16);
-//			decDecompose = "[" + new BigInteger(binary.substring(0, 6), 2).toString(10);
-//			decDecompose = decDecompose + " " + new BigInteger(binary.substring(6, 32), 2).toString(10);
-//			String rdS = mapping.register.get(rdT);
-//			mnemonicFormat = value + " " + rdS;
-//		} else if (value.equalsIgnoreCase("mthi")) {
-//			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
-//			hexDecompose = hexDecompose +" " + new BigInteger(binary.substring(6, 11), 2).toString(16);
-//			decDecompose = "[" + new BigInteger(binary.substring(0, 6), 2).toString(10);
-//			decDecompose = decDecompose + " " + new BigInteger(binary.substring(6, 32), 2).toString(10);
-//			String rsS = mapping.register.get(rsT);
-//			mnemonicFormat = value + " " + rsS;
+		if(Integer.parseInt(binary, 2) == 0) {
+			
 		} else if (func.getType() == 'r' || func.getType() == 'i') {
 
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
@@ -119,7 +97,7 @@ public class disassembler {
 				int immediate = Integer.parseInt(binary.substring(16, 32), 2);
 				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
 				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
-				hexDecompose = hexDecompose + " " + immediate;
+				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(16, 32), 2).toString(16);
 				mnemonicFormat = value + " " + rsS + " " + rtS + " " + immediate;
 
 				decDecompose = "[" + new BigInteger(binary.substring(0, 6), 2).toString(10);
