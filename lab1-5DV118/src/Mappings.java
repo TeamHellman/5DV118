@@ -21,8 +21,8 @@ public class Mappings {
 		opCode.put(0x03, new opCode("jal", 'j'));
 		opCode.put(0x04, new opCode("beq", 'i'));
 		opCode.put(0x05, new opCode("bne", 'i'));
-		opCode.put(0x06, new opCode("blez", 'i'));
-		opCode.put(0x07, new opCode("bgtz", 'i'));
+		opCode.put(0x06, new opCode("blez", 'v'));
+		opCode.put(0x07, new opCode("bgtz", 'v'));
 		opCode.put(0x08, new opCode("addi", 'i'));
 		opCode.put(0x09, new opCode("addiu", 'i'));
 		opCode.put(0x0a, new opCode("slti", 'i'));
@@ -44,38 +44,38 @@ public class Mappings {
 		opCode.put(0x1d, new opCode("1d", 'r'));
 		opCode.put(0x1e, new opCode("1e", 'r'));
 		opCode.put(0x1f, new opCode("1f", 'r'));
-		opCode.put(0x20, new opCode("lb", 'i'));
-		opCode.put(0x21, new opCode("lh", 'i'));
-		opCode.put(0x22, new opCode("lwl", 'i'));
-		opCode.put(0x23, new opCode("lw", 'i'));
-		opCode.put(0x24, new opCode("lbu", 'i'));
-		opCode.put(0x25, new opCode("lhu", 'i'));
-		opCode.put(0x26, new opCode("lwr", 'i'));
-		opCode.put(0x28, new opCode("sb", 'i'));
-		opCode.put(0x29, new opCode("sh", 'i'));
-		opCode.put(0x2a, new opCode("swl", 'i'));
-		opCode.put(0x2b, new opCode("sw", 'i'));
-		opCode.put(0x2e, new opCode("swr", 'i'));
+		opCode.put(0x20, new opCode("lb", 'y'));
+		opCode.put(0x21, new opCode("lh", 'y'));
+		opCode.put(0x22, new opCode("lwl", 'y'));
+		opCode.put(0x23, new opCode("lw", 'y'));
+		opCode.put(0x24, new opCode("lbu", 'y'));
+		opCode.put(0x25, new opCode("lhu", 'y'));
+		opCode.put(0x26, new opCode("lwr", 'y'));
+		opCode.put(0x28, new opCode("sb", 'y'));
+		opCode.put(0x29, new opCode("sh", 'y'));
+		opCode.put(0x2a, new opCode("swl", 'y'));
+		opCode.put(0x2b, new opCode("sw", 'y'));
+		opCode.put(0x2e, new opCode("swr", 'y'));
 		opCode.put(0x2f, new opCode("cache", 'i'));
-		opCode.put(0x30, new opCode("ll", 'i'));
-		opCode.put(0x31, new opCode("lwc1", 'i'));
+		opCode.put(0x30, new opCode("ll", 'y'));
+		opCode.put(0x31, new opCode("lwc1", 'z'));
 		opCode.put(0x32, new opCode("lwc2", 'i'));
 		opCode.put(0x33, new opCode("pref", 'i'));
 		opCode.put(0x35, new opCode("ldc1", 'i'));
 		opCode.put(0x36, new opCode("ldc2", 'i'));
-		opCode.put(0x38, new opCode("sc", 'i'));
-		opCode.put(0x39, new opCode("swc1", 'i'));
+		opCode.put(0x38, new opCode("sc", 'y'));
+		opCode.put(0x39, new opCode("swc1", 'z'));
 		opCode.put(0x3a, new opCode("swc2", 'i'));
-		opCode.put(0x3d, new opCode("sdc1", 'i'));
+		opCode.put(0x3d, new opCode("sdc1", 'z'));
 		opCode.put(0x3e, new opCode("sdc2", 'i'));
 
 
-		funct1.put(0, new opCode("madd", 'r'));
-		funct1.put(1, new opCode("maddu", 'r'));
+		funct1.put(0, new opCode("madd", 'p'));
+		funct1.put(1, new opCode("maddu", 'p'));
 		funct1.put(2, new opCode("mul", 'r'));
 		funct1.put(4, new opCode("msubu", 'r'));
-		funct1.put(33, new opCode("clz", 'r'));
-		funct1.put(34, new opCode("clo", 'r'));
+		funct1.put(33, new opCode("clz", 'o'));
+		funct1.put(34, new opCode("clo", 'o'));
 
 
 		funct2.put(0, new opCode("sll", 'r'));
@@ -85,18 +85,18 @@ public class Mappings {
 		funct2.put(6, new opCode("srlv", 'r'));
 		funct2.put(7, new opCode("srav", 'r'));
 		funct2.put(8, new opCode("jr", 'n'));
-		funct2.put(9, new opCode("jalr", 'r'));
+		funct2.put(9, new opCode("jalr", 'o'));
 		funct2.put(10, new opCode("movz", 'r'));
 		funct2.put(11, new opCode("movn", 'r'));
 		funct2.put(12, new opCode("syscall", 'l'));
-		funct2.put(13, new opCode("break", 'r'));
+		funct2.put(13, new opCode("break", 'k'));
 		funct2.put(15, new opCode("sync", 'r'));
 		funct2.put(16, new opCode("mfhi", 'm'));
 		funct2.put(17, new opCode("mthi", 'n'));
 		funct2.put(18, new opCode("mflo", 'm'));
 		funct2.put(19, new opCode("mtlo", 'n'));
-		funct2.put(24, new opCode("mult", 'r'));
-		funct2.put(25, new opCode("multu", 'r'));
+		funct2.put(24, new opCode("mult", 'p'));
+		funct2.put(25, new opCode("multu", 'p'));
 		funct2.put(26, new opCode("div", 'r'));
 		funct2.put(27, new opCode("divu", 'r'));
 		funct2.put(32, new opCode("add", 'r'));
@@ -109,12 +109,12 @@ public class Mappings {
 		funct2.put(39, new opCode("nor", 'r'));
 		funct2.put(42, new opCode("slt", 'r'));
 		funct2.put(43, new opCode("sltu", 'r'));
-		funct2.put(48, new opCode("tge", 'r'));
-		funct2.put(49, new opCode("tgeu", 'r'));
-		funct2.put(50, new opCode("tlt", 'r'));
-		funct2.put(51, new opCode("tltu", 'r'));
-		funct2.put(52, new opCode("teq", 'r'));
-		funct2.put(54, new opCode("tne", 'r'));
+		funct2.put(48, new opCode("tge", 'p'));
+		funct2.put(49, new opCode("tgeu", 'p'));
+		funct2.put(50, new opCode("tlt", 'p'));
+		funct2.put(51, new opCode("tltu", 'p'));
+		funct2.put(52, new opCode("teq", 'p'));
+		funct2.put(54, new opCode("tne", 'p'));
 
 
 		funct3.put(0, new opCode("add.", 'r'));
@@ -160,9 +160,9 @@ public class Mappings {
 		funct4.put(31, new opCode("deret", 'r'));
 
 
-		rs.put(0, new opCode("mfc", 'f'));
+		rs.put(0, new opCode("mfc", 'q'));
 		rs.put(2, new opCode("cfc", 'f'));
-		rs.put(4, new opCode("mtc", 'f'));
+		rs.put(4, new opCode("mtc", 's'));
 		rs.put(6, new opCode("ctc", 'f'));
 		rs.put(32, new opCode("cop0", 'f'));
 		rs.put(33, new opCode("cop1s", 'r'));
@@ -203,33 +203,33 @@ public class Mappings {
 		register.put(31, "$ra");
 
 
-		rt.put(0, new opCode("bltz", 'i'));
-		rt.put(1, new opCode("bgez", 'i'));
+		rt.put(0, new opCode("bltz", 'v'));
+		rt.put(1, new opCode("bgez", 'v'));
 		rt.put(2, new opCode("bltzl", 'i'));
 		rt.put(3, new opCode("bgezl", 'i'));
-		rt.put(8, new opCode("tgei", 'i'));
-		rt.put(9, new opCode("tgeiu", 'i'));
-		rt.put(10, new opCode("tlti", 'i'));
-		rt.put(11, new opCode("tltiu", 'i'));
+		rt.put(8, new opCode("tgei", 'x'));
+		rt.put(9, new opCode("tgeiu", 'x'));
+		rt.put(10, new opCode("tlti", 'x'));
+		rt.put(11, new opCode("tltiu", 'x'));
 		rt.put(12, new opCode("tegi", 'i'));
-		rt.put(14, new opCode("tnei", 'i'));
-		rt.put(16, new opCode("bltzal", 'i'));
-		rt.put(17, new opCode("bgezal", 'i'));
+		rt.put(14, new opCode("tnei", 'x'));
+		rt.put(16, new opCode("bltzal", 'v'));
+		rt.put(17, new opCode("bgezal", 'v'));
 		rt.put(18, new opCode("bltzall", 'i'));
 		rt.put(19, new opCode("bgczall", 'i'));
 
 
-		rs8.put(0, new opCode("bczf", 'x'));
-		rs8.put(1, new opCode("bczt", 'x'));
-		rs8.put(2, new opCode("bczfl", 'x'));
-		rs8.put(3, new opCode("bcztl", 'x'));
+		rs8.put(0, new opCode("bczf", 'g'));
+		rs8.put(1, new opCode("bczt", 'g'));
+		rs8.put(2, new opCode("bczfl", 'g'));
+		rs8.put(3, new opCode("bcztl", 'g'));
 
 
-		mov1.put(0, new opCode("movf", 'x'));
-		mov1.put(1, new opCode("movt", 'x'));
+		mov1.put(0, new opCode("movf", 't'));
+		mov1.put(1, new opCode("movt", 't'));
 
 
-		mov2.put(0, new opCode("movf.", 'x'));
-		mov2.put(1, new opCode("movt.", 'x'));
+		mov2.put(0, new opCode("movf.", 't'));
+		mov2.put(1, new opCode("movt.", 't'));
 	}
 }
