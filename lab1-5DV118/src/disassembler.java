@@ -154,7 +154,11 @@ public class disassembler {
 		} else if(func.getType() == 'j') {
 			int where = Integer.parseInt(binary.substring(6, 32), 2);
 			mnemonicFormat = value + " " + where;
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 32), 2).toString(16);
 
+			decDecompose = "[" + new BigInteger(binary.substring(0, 6), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(6, 32), 2).toString(10);
+			
 		} else if(func.getType() == 'k') {
 			int codeT = (int)Integer.parseInt(binary.substring(6, 26), 2);
 			String codeS = mapping.register.get(codeT);
@@ -291,8 +295,7 @@ public class disassembler {
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
 			int labelT = Integer.parseInt(binary.substring(16, 32), 2);
 			String rsS = mapping.register.get(rsT);
-			String labelS = mapping.register.get(labelT);
-			mnemonicFormat = value + " " + rsS + " " + labelS;
+			mnemonicFormat = value + " " + rsS + " " + labelT;
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(16, 32), 2).toString(16);
@@ -305,8 +308,7 @@ public class disassembler {
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
 			int immT = Integer.parseInt(binary.substring(16, 32), 2);
 			String rsS = mapping.register.get(rsT);
-			String immS = mapping.register.get(immT);
-			mnemonicFormat = value + " " + rsS + " " + immS;
+			mnemonicFormat = value + " " + rsS + " " + immT;
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(16, 32), 2).toString(16);
@@ -319,8 +321,7 @@ public class disassembler {
 			int rtT = Integer.parseInt(binary.substring(11, 16), 2);
 			int addressT = Integer.parseInt(binary.substring(16, 32), 2);
 			String rsS = mapping.register.get(rtT);
-			String addressS = mapping.register.get(addressT);
-			mnemonicFormat = value + " " + rsS + " " + addressS;
+			mnemonicFormat = value + " " + rsS + " " + addressT;
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(16, 32), 2).toString(16);
@@ -333,8 +334,7 @@ public class disassembler {
 			int ftT = Integer.parseInt(binary.substring(11, 16), 2);
 			int addressT = Integer.parseInt(binary.substring(16, 32), 2);
 			String ftS = mapping.register.get(ftT);
-			String addressS = mapping.register.get(addressT);
-			mnemonicFormat = value + " " + ftS + " " + addressS;
+			mnemonicFormat = value + " " + ftS + " " + addressT;
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(16, 32), 2).toString(16);
