@@ -228,13 +228,15 @@ public class disassembler {
 			mnemonicFormat = value + " " + rsS + " " + rtS;
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
-			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(16, 26), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(16, 21), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(21, 26), 2).toString(16);
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(26, 32), 2).toString(16);
 
 			decDecompose = "[" + new BigInteger(binary.substring(0, 6), 2).toString(10);
 			decDecompose = decDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(10);
 			decDecompose = decDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(10);
-			decDecompose = decDecompose + " " + new BigInteger(binary.substring(16, 26), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(16, 21), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(21, 26), 2).toString(10);
 			decDecompose = decDecompose + " " + new BigInteger(binary.substring(26, 32), 2).toString(10);
 		} else if(func.getType() == 'q') {
 			int rtT = Integer.parseInt(binary.substring(11, 16), 2);
