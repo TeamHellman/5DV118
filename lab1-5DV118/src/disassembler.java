@@ -16,7 +16,7 @@ public class disassembler {
 		//System.out.println(Long.toHexString(Long.parseLong(binary,2)));
 
 		int opcode = Integer.parseInt(binary.substring(0, 6), 2);
-		System.out.println(opcode);
+
 		if (opcode == 28) {
 			id = Integer.parseInt(binary.substring(26, 32), 2);
 
@@ -100,12 +100,14 @@ public class disassembler {
 			}
 		} else {
 			func = mapping.opCode.get(opcode);
+
 			if(func == null){
 			    MIPS.setFormat('X');
-			    MIPS.setHexDecomposed("Instruction not known - OP = "+ func +".");
+			    MIPS.setHexDecomposed("Instruction not known, OP = "+ opcode +".");
 			    return -1;
 			}
-			value = mapping.opCode.get(opcode).getOpcode();
+			value = func.getOpcode();
+			System.out.println(value+" d asa ");
 
 		}
 		hexDecompose = "[0x" + new BigInteger(binary.substring(0, 6), 2).toString(16);
