@@ -35,15 +35,7 @@ public class Mappings {
 		opCode.put(0x15, new opCode("bnel", 'i'));
 		opCode.put(0x16, new opCode("blezl", 'i'));
 		opCode.put(0x17, new opCode("bgtzl", 'i'));
-
-		opCode.put(0x18, new opCode("18", 'r'));
-		opCode.put(0x19, new opCode("19", 'r'));
-		opCode.put(0x1a, new opCode("1a", 'r'));
-		opCode.put(0x1b, new opCode("1b", 'r'));
 		opCode.put(0x1c, new opCode("1c", 'r'));
-		opCode.put(0x1d, new opCode("1d", 'r'));
-		opCode.put(0x1e, new opCode("1e", 'r'));
-		opCode.put(0x1f, new opCode("1f", 'r'));
 		opCode.put(0x20, new opCode("lb", 'y'));
 		opCode.put(0x21, new opCode("lh", 'y'));
 		opCode.put(0x22, new opCode("lwl", 'y'));

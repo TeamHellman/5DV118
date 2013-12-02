@@ -152,6 +152,16 @@ public class disassembler {
 			int where = Integer.parseInt(binary.substring(6, 32), 2);
 			mnemonicFormat = value + " " + where;
 
+		} else if(func.getType() == 'k') {
+			int codeT = (int)Integer.parseInt(binary.substring(6, 26), 2);
+			String codeS = mapping.register.get(codeT);
+			mnemonicFormat = value + " " + codeS;
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 26), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(26, 32), 2).toString(16);
+
+			decDecompose = "[" + new BigInteger(binary.substring(0, 6), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(6, 26), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(26, 32), 2).toString(10);
 		} else if(func.getType() == 'l') {
 			mnemonicFormat = value;
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 26), 2).toString(16);
@@ -188,7 +198,7 @@ public class disassembler {
 			decDecompose = decDecompose + " " + new BigInteger(binary.substring(26, 32), 2).toString(10);
 		} else if(func.getType() == 'o') {
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
-			int rdT = Integer.parseInt(binary.substring(6, 11), 2);
+			int rdT = Integer.parseInt(binary.substring(16, 21), 2);
 			String rsS = mapping.register.get(rsT);
 			String rdS = mapping.register.get(rdT);
 			mnemonicFormat = value + " " + rsS + " " + rdS;
@@ -204,7 +214,77 @@ public class disassembler {
 			decDecompose = decDecompose + " " + new BigInteger(binary.substring(16, 21), 2).toString(10);
 			decDecompose = decDecompose + " " + new BigInteger(binary.substring(21, 26), 2).toString(10);
 			decDecompose = decDecompose + " " + new BigInteger(binary.substring(26, 32), 2).toString(10);
-		} 
+		} else if(func.getType() == 'p') {
+			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
+			int rtT = Integer.parseInt(binary.substring(11, 16), 2);
+			String rsS = mapping.register.get(rsT);
+			String rtS = mapping.register.get(rtT);
+			mnemonicFormat = value + " " + rsS + " " + rtS;
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(16, 26), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(26, 32), 2).toString(16);
+
+			decDecompose = "[" + new BigInteger(binary.substring(0, 6), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(16, 26), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(26, 32), 2).toString(10);
+		} else if(func.getType() == 'q') {
+			int rtT = Integer.parseInt(binary.substring(11, 16), 2);
+			int rdT = Integer.parseInt(binary.substring(16, 21), 2);
+			String rtS = mapping.register.get(rtT);
+			String rdS = mapping.register.get(rdT);
+			mnemonicFormat = value + " " + rtS + " " + rdS;
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(16, 21), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(21, 32), 2).toString(16);
+
+			decDecompose = "[" + new BigInteger(binary.substring(0, 6), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(16, 21), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(21, 32), 2).toString(10);
+		} else if(func.getType() == 's') {
+			int rdT = Integer.parseInt(binary.substring(16, 21), 2);
+			int rtT = Integer.parseInt(binary.substring(11, 16), 2);
+			String rtS = mapping.register.get(rtT);
+			String rdS = mapping.register.get(rdT);
+			mnemonicFormat = value + " " + rdS + " " + rtS;
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(16, 21), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(21, 32), 2).toString(16);
+
+			decDecompose = "[" + new BigInteger(binary.substring(0, 6), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(16, 21), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(21, 32), 2).toString(10);
+		} else if(func.getType() == 't') {
+			int rdT = Integer.parseInt(binary.substring(16, 21), 2);
+			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
+			int ccT = Integer.parseInt(binary.substring(11, 14), 2);
+			String rdS = mapping.register.get(rdT);
+			String rsS = mapping.register.get(rsT);
+			String ccS = mapping.register.get(ccT);
+			mnemonicFormat = value + " " + rdS + " " + rsS + " " + ccS;
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 14), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(14, 16), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(16, 21), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(21, 26), 2).toString(16);
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(26, 32), 2).toString(16);
+
+			decDecompose = "[" + new BigInteger(binary.substring(0, 6), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(11, 14), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(14, 16), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(16, 21), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(21, 26), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(26, 32), 2).toString(10);
+		}
 		if(value == null){
 			mnemonicFormat = "Instruction not known";
 		}
