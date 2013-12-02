@@ -139,7 +139,10 @@ public class disassembler {
 				decDecompose = decDecompose + " " + new BigInteger(binary.substring(21, 26), 2).toString(10);
 				decDecompose = decDecompose + " " + new BigInteger(binary.substring(26, 32), 2).toString(10);
 			} else if (func.getType() == 'i'){
-				int immediate = Integer.parseInt(binary.substring(16, 32), 2);
+				if(value.charAt(value.length() - 1) == 'u') {
+					int immediate = Integer.parseInt(binary.substring(16, 32), 2);
+				}
+				short immediate = (short)Integer.parseInt(binary.substring(16, 32), 2);
 				mnemonicFormat = value + " " + rsS + " " + rtS + " " + immediate;
 				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
 				hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(11, 16), 2).toString(16);
@@ -293,7 +296,10 @@ public class disassembler {
 			decDecompose = decDecompose + " " + new BigInteger(binary.substring(26, 32), 2).toString(10);
 		} else if (func.getType() == 'v'){
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
-			int labelT = Integer.parseInt(binary.substring(16, 32), 2);
+			if(value.charAt(value.length() - 1) == 'u') {
+				int labelT = Integer.parseInt(binary.substring(16, 32), 2);
+			}
+			short labelT = (short)Integer.parseInt(binary.substring(16, 32), 2);
 			String rsS = mapping.register.get(rsT);
 			mnemonicFormat = value + " " + rsS + " " + labelT;
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
@@ -306,7 +312,10 @@ public class disassembler {
 			decDecompose = decDecompose + " " + new BigInteger(binary.substring(16, 32), 2).toString(10);
 		} else if (func.getType() == 'x'){
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
-			int immT = Integer.parseInt(binary.substring(16, 32), 2);
+			if(value.charAt(value.length() - 1) == 'u') {
+				int immT = Integer.parseInt(binary.substring(16, 32), 2);
+			}
+			short immT = (short)Integer.parseInt(binary.substring(16, 32), 2);
 			String rsS = mapping.register.get(rsT);
 			mnemonicFormat = value + " " + rsS + " " + immT;
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
@@ -319,7 +328,10 @@ public class disassembler {
 			decDecompose = decDecompose + " " + new BigInteger(binary.substring(16, 32), 2).toString(10);
 		} else if (func.getType() == 'y'){
 			int rtT = Integer.parseInt(binary.substring(11, 16), 2);
-			int addressT = Integer.parseInt(binary.substring(16, 32), 2);
+			if(value.charAt(value.length() - 1) == 'u') {
+				int addressT = Integer.parseInt(binary.substring(16, 32), 2);
+			}
+			short addressT = (short)Integer.parseInt(binary.substring(16, 32), 2);
 			String rsS = mapping.register.get(rtT);
 			mnemonicFormat = value + " " + rsS + " " + addressT;
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
@@ -332,7 +344,10 @@ public class disassembler {
 			decDecompose = decDecompose + " " + new BigInteger(binary.substring(16, 32), 2).toString(10);
 		} else if (func.getType() == 'z'){
 			int ftT = Integer.parseInt(binary.substring(11, 16), 2);
-			int addressT = Integer.parseInt(binary.substring(16, 32), 2);
+			if(value.charAt(value.length() - 1) == 'u') {
+				int addressT = Integer.parseInt(binary.substring(16, 32), 2);
+			}
+			short addressT = (short)Integer.parseInt(binary.substring(16, 32), 2);
 			String ftS = mapping.register.get(ftT);
 			mnemonicFormat = value + " " + ftS + " " + addressT;
 			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 11), 2).toString(16);
