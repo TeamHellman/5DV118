@@ -56,9 +56,13 @@ public class FileParser {
 		// Print
 		for(int i=0; i < instructions.size(); i++){
 			//System.out.println("Input: " + instructions.get(i).getInput() + " HEX Decomposed: " + instructions.get(i).getHexDecomposed() + " DEC Decomposed: " + instructions.get(i).getDecDecomposed() + " Format: " + instructions.get(i).getFormat() + " Mnemonic: " + instructions.get(i).getMnemonicFormat());
+		    	if(instructions.get(i).getFormat() == 'X'){
+		    	     System.out.println(instructions.get(i).getInput() + "        " +  instructions.get(i).getHexDecomposed());
+		    	}else{
 			System.out.println(String.format("%s %8.2s %20s %21s %22s", instructions.get(i).getInput(), instructions.get(i).getFormat(), instructions.get(i).getHexDecomposed(), instructions.get(i).getDecDecomposed(), instructions.get(i).getMnemonicFormat()));
-		}
 
+		    	}
+		}
 
 
 }

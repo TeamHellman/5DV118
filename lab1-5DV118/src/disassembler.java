@@ -3,7 +3,7 @@ import java.math.BigInteger;
 
 public class disassembler {
 
-	public void parser(String binary, Instruction MIPS ) {
+	public int parser(String binary, Instruction MIPS ) {
 
 		Mappings mapping = new Mappings();
 
@@ -16,25 +16,47 @@ public class disassembler {
 		//System.out.println(Long.toHexString(Long.parseLong(binary,2)));
 
 		int opcode = Integer.parseInt(binary.substring(0, 6), 2);
+		System.out.println(opcode);
 		if (opcode == 28) {
 			id = Integer.parseInt(binary.substring(26, 32), 2);
 
 			func = mapping.funct1.get(id);
+			if(func == null){
+			    MIPS.setFormat('X');
+			    MIPS.setHexDecomposed("Partial legality - level 1, funct = "+id +".");
+			    return -1;
+			}
 			value = func.getOpcode();
+
 		} else if (opcode == 1) {
 			id = Integer.parseInt(binary.substring(12, 16), 2);
 
 			func = mapping.funct1.get(id);
+			if(func == null){
+			    MIPS.setFormat('X');
+			    MIPS.setHexDecomposed("Partial legality - level 1, rt = "+id +".");
+			    return -1;
+			}
 			value = func.getOpcode();
 		} else if (opcode == 0) {
 			id = Integer.parseInt(binary.substring(26, 32), 2);
 
 			func = mapping.funct2.get(id);
+			if(func == null){
+			    MIPS.setFormat('X');
+			    MIPS.setHexDecomposed("Partial legality - level 1, funct = "+id +".");
+			    return -1;
+			}
 			value = func.getOpcode();
 			if (id == 1) {
 				id = Integer.parseInt(binary.substring(16, 16), 2);
 
 				func = mapping.mov1.get(id);
+				if(func == null){
+				    MIPS.setFormat('X');
+				    MIPS.setHexDecomposed("Partial legality - level 2, funct = "+id +".");
+				    return -1;
+				}
 				value = func.getOpcode();
 			}
 		} else if ((opcode >= 16) && (opcode <= 19)) {
@@ -42,25 +64,47 @@ public class disassembler {
 			id = Integer.parseInt(binary.substring(7, 11), 2);
 
 			func = mapping.rs.get(id);
+			if(func == null){
+			    MIPS.setFormat('X');
+			    MIPS.setHexDecomposed("Partial legality - level 1, rs = "+id +".");
+			    return -1;
+			}
 			value = func.getOpcode();
 			if (id == 0 || id == 2 || id == 4 || id == 6) {
-				value = mapping.rs.get(id).getOpcode();
+				func = mapping.rs.get(id);
+				if(func == null){
+				    MIPS.setFormat('X');
+				    MIPS.setHexDecomposed("partial legality - level 2, funct = "+id +".");
+				    return -1;
+				}
+				value =	func.getOpcode();
 				value = value + z;
 			}
 			if ((id == 8) && (z > 0)) {
 				id = Integer.parseInt(binary.substring(15, 16), 2);
 
-				value = mapping.funct1.get(id).getOpcode();
+				func = mapping.funct1.get(id);
+				if(func == null){
+				    MIPS.setFormat('X');
+				    MIPS.setHexDecomposed("partial legality - level 2, funct = "+id +".");
+				    return -1;
+				}
+				value = func.getOpcode();
 				value = value.replaceAll("z", String.valueOf(z));
 			}
 			if (id == 16) {
-
+			    //not done
 			}
 			if (id == 17) {
-
+			    //not done
 			}
 		} else {
 			func = mapping.opCode.get(opcode);
+			if(func == null){
+			    MIPS.setFormat('X');
+			    MIPS.setHexDecomposed("Instruction not known - OP = "+ func +".");
+			    return -1;
+			}
 			value = mapping.opCode.get(opcode).getOpcode();
 
 		}
@@ -151,6 +195,8 @@ public class disassembler {
 		MIPS.setMnemonicFormat(mnemonicFormat);
 		MIPS.setHexDecomposed(hexDecompose);
 		MIPS.setDecDecomposed(decDecompose);
+		return 0;
 	}
+
 
 }
