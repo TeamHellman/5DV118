@@ -28,9 +28,9 @@ public class disassembler {
 			value = func.getOpcode();
 
 		} else if (opcode == 1) {
-			id = Integer.parseInt(binary.substring(12, 16), 2);
+			id = Integer.parseInt(binary.substring(11, 16), 2);
 
-			func = mapping.funct1.get(id);
+			func = mapping.rt.get(id);
 			if(func == null){
 			    MIPS.setFormat('X');
 			    MIPS.setHexDecomposed("Partial legality - level 1, opcode = 1, rt = "+id +".");

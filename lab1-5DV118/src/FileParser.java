@@ -63,8 +63,6 @@ public class FileParser {
 
 		    	}
 		}
-
-
 }
 	static String hexToBin(String s) {
 		return new BigInteger(s, 16).toString(2);
