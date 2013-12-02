@@ -93,10 +93,14 @@ public class disassembler {
 				value = value.replaceAll("z", String.valueOf(z));
 			}
 			if (id == 16) {
-			    //not done
+			    MIPS.setFormat('X');
+			    MIPS.setHexDecomposed("Instruction not supported");
+			    return -1;
 			}
 			if (id == 17) {
-			    //not done
+			    MIPS.setFormat('X');
+			    MIPS.setHexDecomposed("Instruction not supported");
+			    return -1;
 			}
 		} else {
 			func = mapping.opCode.get(opcode);
