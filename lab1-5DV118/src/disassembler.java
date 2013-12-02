@@ -157,7 +157,10 @@ public class disassembler {
 		} else if(func.getType() == 'j') {
 			int where = Integer.parseInt(binary.substring(6, 32), 2);
 			mnemonicFormat = value + " " + where;
+			hexDecompose = hexDecompose + " " + new BigInteger(binary.substring(6, 32), 2).toString(16);
 
+			decDecompose = "[" + new BigInteger(binary.substring(0, 6), 2).toString(10);
+			decDecompose = decDecompose + " " + new BigInteger(binary.substring(6, 32), 2).toString(10);
 		} else if(func.getType() == 'k') {
 			int codeT = (int)Integer.parseInt(binary.substring(6, 26), 2);
 			String codeS = mapping.register.get(codeT);
