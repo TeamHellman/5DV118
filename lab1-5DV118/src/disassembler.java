@@ -23,7 +23,7 @@ public class disassembler {
 			func = mapping.funct1.get(id);
 			if(func == null){
 			    MIPS.setFormat('X');
-			    MIPS.setHexDecomposed("Partial legality - level 1, funct = "+id +".");
+			    MIPS.setHexDecomposed("Partial legality - level 1, opcode = 28, funct = "+id +".");
 			    return -1;
 			}
 			value = func.getOpcode();
@@ -34,7 +34,7 @@ public class disassembler {
 			func = mapping.funct1.get(id);
 			if(func == null){
 			    MIPS.setFormat('X');
-			    MIPS.setHexDecomposed("Partial legality - level 1, rt = "+id +".");
+			    MIPS.setHexDecomposed("Partial legality - level 1, opcode = 1, rt = "+id +".");
 			    return -1;
 			}
 			value = func.getOpcode();
@@ -44,7 +44,7 @@ public class disassembler {
 			func = mapping.funct2.get(id);
 			if(func == null){
 			    MIPS.setFormat('X');
-			    MIPS.setHexDecomposed("Partial legality - level 1, funct = "+id +".");
+			    MIPS.setHexDecomposed("Partial legality - level 1, opcode = 0, funct = "+id +".");
 			    return -1;
 			}
 			value = func.getOpcode();
@@ -66,7 +66,7 @@ public class disassembler {
 			func = mapping.rs.get(id);
 			if(func == null){
 			    MIPS.setFormat('X');
-			    MIPS.setHexDecomposed("Partial legality - level 1, rs = "+id +".");
+			    MIPS.setHexDecomposed("Partial legality - level 1, opcode = " + opcode + ", rs = "+id +".");
 			    return -1;
 			}
 			value = func.getOpcode();
@@ -74,7 +74,7 @@ public class disassembler {
 				func = mapping.rs.get(id);
 				if(func == null){
 				    MIPS.setFormat('X');
-				    MIPS.setHexDecomposed("partial legality - level 2, funct = "+id +".");
+				    MIPS.setHexDecomposed("partial legality - level 2, opcode = " + opcode + ", funct = "+id +".");
 				    return -1;
 				}
 				value =	func.getOpcode();
@@ -86,7 +86,7 @@ public class disassembler {
 				func = mapping.funct1.get(id);
 				if(func == null){
 				    MIPS.setFormat('X');
-				    MIPS.setHexDecomposed("partial legality - level 2, funct = "+id +".");
+				    MIPS.setHexDecomposed("partial legality - level 2, opcode = " + opcode + ", funct = "+id +".");
 				    return -1;
 				}
 				value = func.getOpcode();
