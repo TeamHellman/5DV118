@@ -13,7 +13,6 @@ public class disassembler {
 		String hexDecompose = null;
 		String decDecompose = null;
 		int id = 0;
-		//System.out.println(Long.toHexString(Long.parseLong(binary,2)));
 
 		int opcode = Integer.parseInt(binary.substring(0, 6), 2);
 
@@ -111,8 +110,6 @@ public class disassembler {
 			    return -1;
 			}
 			value = func.getOpcode();
-			System.out.println(value+" d asa ");
-
 		}
 		hexDecompose = "[0x" + new BigInteger(binary.substring(0, 6), 2).toString(16);
 		MIPS.setFormat(func.getType());
