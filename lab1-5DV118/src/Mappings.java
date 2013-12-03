@@ -71,8 +71,8 @@ public class Mappings {
 
 
 		funct2.put(0, new opCode("sll", 'g'));
-		funct2.put(2, new opCode("slr", 'r'));
-		funct2.put(3, new opCode("sra", 'r'));
+		funct2.put(2, new opCode("srl", 'g'));
+		funct2.put(3, new opCode("sra", 'g'));
 		funct2.put(4, new opCode("sllv", 'r'));
 		funct2.put(6, new opCode("srlv", 'r'));
 		funct2.put(7, new opCode("srav", 'r'));
