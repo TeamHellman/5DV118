@@ -26,6 +26,11 @@ public class disassembler {
 				return -1;
 			}
 			value = func.getOpcode();
+			if(mapping.shamt.containsValue(value) && Integer.parseInt(binary.substring(21, 26), 2) != 0){
+			    MIPS.setFormat('X');
+				MIPS.setHexDecomposed("Partial legality - shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
+				return -1;
+			}
 
 		} else if (opcode == 1) {
 			id = Integer.parseInt(binary.substring(11, 16), 2);
@@ -38,6 +43,11 @@ public class disassembler {
 				return -1;
 			}
 			value = func.getOpcode();
+			if(mapping.shamt.containsValue(value) && Integer.parseInt(binary.substring(21, 26), 2) != 0){
+			    MIPS.setFormat('X');
+				MIPS.setHexDecomposed("Partial legality - shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
+				return -1;
+			}
 		} else if (opcode == 0) {
 			id = Integer.parseInt(binary.substring(26, 32), 2);
 
@@ -49,6 +59,11 @@ public class disassembler {
 				return -1;
 			}
 			value = func.getOpcode();
+			if(mapping.shamt.containsValue(value) && Integer.parseInt(binary.substring(21, 26), 2) != 0){
+			    MIPS.setFormat('X');
+				MIPS.setHexDecomposed("Partial legality - shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
+				return -1;
+			}
 			if (id == 1) {
 				id = Integer.parseInt(binary.substring(16, 16), 2);
 
@@ -60,6 +75,11 @@ public class disassembler {
 					return -1;
 				}
 				value = func.getOpcode();
+				if(mapping.shamt.containsValue(value) && Integer.parseInt(binary.substring(21, 26), 2) != 0){
+				    MIPS.setFormat('X');
+					MIPS.setHexDecomposed("Partial legality - shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
+					return -1;
+				}
 			}
 			if (id == 0) {
 				int shamt = Integer.parseInt(binary.substring(21, 26), 2);
@@ -81,6 +101,11 @@ public class disassembler {
 				return -1;
 			}
 			value = func.getOpcode();
+			if(mapping.shamt.containsValue(value) && Integer.parseInt(binary.substring(21, 26), 2) != 0){
+			    MIPS.setFormat('X');
+				MIPS.setHexDecomposed("Partial legality - shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
+				return -1;
+			}
 			if (id == 0 || id == 2 || id == 4 || id == 6) {
 				func = mapping.rs.get(id);
 				if (func == null) {
@@ -90,6 +115,7 @@ public class disassembler {
 					return -1;
 				}
 				value = func.getOpcode();
+
 				value = value + z;
 			}
 			if ((id == 8) && (z > 0)) {
