@@ -30,7 +30,7 @@ public class Mappings {
 		opCode.put(0x0c, new opCode("andi", 'i'));
 		opCode.put(0x0d, new opCode("ori", 'i'));
 		opCode.put(0x0e, new opCode("xori", 'i'));
-		opCode.put(0x0f, new opCode("lui", 'i'));
+		opCode.put(0x0f, new opCode("lui", 'h'));
 		opCode.put(0x14, new opCode("beql", 'i'));
 		opCode.put(0x15, new opCode("bnel", 'i'));
 		opCode.put(0x16, new opCode("blezl", 'i'));
@@ -107,6 +107,7 @@ public class Mappings {
 		funct2.put(51, new opCode("tltu", 'p'));
 		funct2.put(52, new opCode("teq", 'p'));
 		funct2.put(54, new opCode("tne", 'p'));
+		funct2.put(100, new opCode("nop", 'l'));
 
 
 		funct3.put(0, new opCode("add.", 'r'));
