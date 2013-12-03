@@ -238,7 +238,7 @@ public class disassembler {
 				short immT = (short) Integer.parseInt(binary.substring(16, 32), 2);
 				mnemonicFormat = value + " " + rtS + ", " + immT;
 			}
-			
+
 			hexDecompose = hexDecompose + " "
 					+ new BigInteger(binary.substring(6, 11), 2).toString(16);
 			hexDecompose = hexDecompose + " "
