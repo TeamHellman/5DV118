@@ -13,6 +13,7 @@ public class Mappings {
 	public HashMap<Integer, opCode> rs8 = new HashMap<Integer, opCode>();
 	public HashMap<Integer, opCode> mov1 = new HashMap<Integer, opCode>();
 	public HashMap<Integer, opCode> mov2 = new HashMap<Integer, opCode>();
+	public HashMap<Integer, String> shamt = new HashMap<Integer, String>();
 	public Mappings(){
 
 		opCode.put(0x02, new opCode("00", 'r'));
@@ -224,5 +225,23 @@ public class Mappings {
 
 		mov2.put(0, new opCode("movf.", 't'));
 		mov2.put(1, new opCode("movt.", 't'));
+
+		shamt.put(0, "add");
+		shamt.put(1, "addu");
+		shamt.put(2, "and");
+		shamt.put(3, "clo");
+		shamt.put(4, "clz");
+		shamt.put(5, "mul");
+		shamt.put(6, "nor");
+		shamt.put(7, "or");
+		shamt.put(8, "sllv");
+		shamt.put(9, "srav");
+		shamt.put(10, "srlv");
+		shamt.put(11, "sub");
+		shamt.put(12, "subu");
+		shamt.put(13, "slt");
+		shamt.put(14, "sltu");
+
+
 	}
 }
