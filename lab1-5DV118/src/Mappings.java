@@ -70,7 +70,7 @@ public class Mappings {
 		funct1.put(34, new opCode("clo", 'o'));
 
 
-		funct2.put(0, new opCode("sll", 'r'));
+		funct2.put(0, new opCode("sll", 'g'));
 		funct2.put(2, new opCode("slr", 'r'));
 		funct2.put(3, new opCode("sra", 'r'));
 		funct2.put(4, new opCode("sllv", 'r'));

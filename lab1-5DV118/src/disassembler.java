@@ -60,9 +60,10 @@ public class disassembler {
 					return -1;
 				}
 				value = func.getOpcode();
-			} if (id == 0) {
+			}
+			if (id == 0) {
 				int shamt = Integer.parseInt(binary.substring(21, 26), 2);
-				if(shamt == 0) {
+				if (shamt == 0) {
 					func = mapping.funct2.get(100);
 					value = "nop";
 					MIPS.setFormat('l');
@@ -193,7 +194,7 @@ public class disassembler {
 							+ immediate;
 				} else {
 					short immediate = (short) Integer.parseInt(
-						binary.substring(16, 32), 2);
+							binary.substring(16, 32), 2);
 					mnemonicFormat = value + " " + rtS + ", " + rsS + ", "
 							+ immediate;
 				}
@@ -228,6 +229,37 @@ public class disassembler {
 								.toString(10);
 			}
 
+		} else if (func.getType() == 'g') {
+			int rdT = Integer.parseInt(binary.substring(16, 21), 2);
+			int rtT = Integer.parseInt(binary.substring(11, 16), 2);
+			int shamtT = (int) Integer.parseInt(binary.substring(21, 26), 2);
+			String rdS = mapping.register.get(rdT);
+			String rtS = mapping.register.get(rtT);
+
+			mnemonicFormat = value + " " + rdS + ", " + rtS + ", " + shamtT;
+			hexDecompose = hexDecompose + " "
+					+ new BigInteger(binary.substring(6, 11), 2).toString(16);
+			hexDecompose = hexDecompose + " "
+					+ new BigInteger(binary.substring(11, 16), 2).toString(16);
+			hexDecompose = hexDecompose + " "
+					+ new BigInteger(binary.substring(16, 21), 2).toString(16);
+			hexDecompose = hexDecompose + " "
+					+ new BigInteger(binary.substring(21, 26), 2).toString(16);
+			hexDecompose = hexDecompose + " "
+					+ new BigInteger(binary.substring(26, 32), 2).toString(16);
+
+			decDecompose = "["
+					+ new BigInteger(binary.substring(0, 6), 2).toString(10);
+			decDecompose = decDecompose + " "
+					+ new BigInteger(binary.substring(6, 11), 2).toString(10);
+			decDecompose = decDecompose + " "
+					+ new BigInteger(binary.substring(11, 16), 2).toString(10);
+			decDecompose = decDecompose + " "
+					+ new BigInteger(binary.substring(16, 21), 2).toString(10);
+			decDecompose = decDecompose + " "
+					+ new BigInteger(binary.substring(21, 26), 2).toString(10);
+			decDecompose = decDecompose + " "
+					+ new BigInteger(binary.substring(26, 32), 2).toString(10);
 		} else if (func.getType() == 'h') {
 			int rtT = Integer.parseInt(binary.substring(11, 16), 2);
 			String rtS = mapping.register.get(rtT);
@@ -235,7 +267,8 @@ public class disassembler {
 				int immT = Integer.parseInt(binary.substring(16, 32), 2);
 				mnemonicFormat = value + " " + rtS + ", " + immT;
 			} else {
-				short immT = (short) Integer.parseInt(binary.substring(16, 32), 2);
+				short immT = (short) Integer.parseInt(binary.substring(16, 32),
+						2);
 				mnemonicFormat = value + " " + rtS + ", " + immT;
 			}
 
@@ -253,8 +286,7 @@ public class disassembler {
 			decDecompose = decDecompose + " "
 					+ new BigInteger(binary.substring(11, 16), 2).toString(10);
 			String[] temp = mnemonicFormat.split(",");
-			decDecompose = decDecompose + " "
-					+ temp[1];
+			decDecompose = decDecompose + " " + temp[1];
 		} else if (func.getType() == 'j') {
 			int where = Integer.parseInt(binary.substring(6, 32), 2);
 			mnemonicFormat = value + " " + where;
@@ -482,8 +514,8 @@ public class disassembler {
 				int labelT = Integer.parseInt(binary.substring(16, 32), 2);
 				mnemonicFormat = value + " " + rsS + ", " + labelT;
 			} else {
-				short labelT = (short) Integer
-					.parseInt(binary.substring(16, 32), 2);
+				short labelT = (short) Integer.parseInt(
+						binary.substring(16, 32), 2);
 				mnemonicFormat = value + " " + rsS + ", " + labelT;
 			}
 			hexDecompose = hexDecompose + " "
@@ -500,8 +532,7 @@ public class disassembler {
 			decDecompose = decDecompose + " "
 					+ new BigInteger(binary.substring(11, 16), 2).toString(10);
 			String[] temp = mnemonicFormat.split(",");
-			decDecompose = decDecompose + " "
-					+ temp[1];
+			decDecompose = decDecompose + " " + temp[1];
 		} else if (func.getType() == 'x') {
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
 			String rsS = mapping.register.get(rsT);
@@ -509,7 +540,8 @@ public class disassembler {
 				int immT = Integer.parseInt(binary.substring(16, 32), 2);
 				mnemonicFormat = value + " " + rsS + ", " + immT;
 			} else {
-				short immT = (short) Integer.parseInt(binary.substring(16, 32), 2);
+				short immT = (short) Integer.parseInt(binary.substring(16, 32),
+						2);
 				mnemonicFormat = value + " " + rsS + ", " + immT;
 			}
 
@@ -527,8 +559,7 @@ public class disassembler {
 			decDecompose = decDecompose + " "
 					+ new BigInteger(binary.substring(11, 16), 2).toString(10);
 			String[] temp = mnemonicFormat.split(",");
-			decDecompose = decDecompose + " "
-					+ temp[1];
+			decDecompose = decDecompose + " " + temp[1];
 		} else if (func.getType() == 'y') {
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
 			int rtT = Integer.parseInt(binary.substring(11, 16), 2);
@@ -537,11 +568,13 @@ public class disassembler {
 			if (value.charAt(value.length() - 1) == 'u') {
 				int addressT = Integer.parseInt(binary.substring(16, 32), 2);
 
-				mnemonicFormat = value + " " + rtS + ", " + addressT + "(" + rsS + ")";
+				mnemonicFormat = value + " " + rtS + ", " + addressT + "("
+						+ rsS + ")";
 			} else {
 				short addressT = (short) Integer.parseInt(
 						binary.substring(16, 32), 2);
-				mnemonicFormat = value + " " + rtS + ", " + addressT + "(" + rsS + ")";
+				mnemonicFormat = value + " " + rtS + ", " + addressT + "("
+						+ rsS + ")";
 			}
 
 			hexDecompose = hexDecompose + " "
@@ -559,8 +592,7 @@ public class disassembler {
 					+ new BigInteger(binary.substring(11, 16), 2).toString(10);
 			String[] temp = mnemonicFormat.split(",");
 			String[] temp1 = temp[1].split("\\(");
-			decDecompose = decDecompose + " "
-					+ temp1[0];
+			decDecompose = decDecompose + " " + temp1[0];
 		} else if (func.getType() == 'z') {
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
 			int ftT = Integer.parseInt(binary.substring(11, 16), 2);
@@ -569,11 +601,13 @@ public class disassembler {
 			if (value.charAt(value.length() - 1) == 'u') {
 				int addressT = Integer.parseInt(binary.substring(16, 32), 2);
 
-				mnemonicFormat = value + " " + ftS + ", " + addressT + "(" + rsS + ")";
+				mnemonicFormat = value + " " + ftS + ", " + addressT + "("
+						+ rsS + ")";
 			} else {
 				short addressT = (short) Integer.parseInt(
 						binary.substring(16, 32), 2);
-				mnemonicFormat = value + " " + ftS + ", " + addressT + "(" + rsS + ")";
+				mnemonicFormat = value + " " + ftS + ", " + addressT + "("
+						+ rsS + ")";
 			}
 
 			hexDecompose = hexDecompose + " "
@@ -591,8 +625,7 @@ public class disassembler {
 					+ new BigInteger(binary.substring(11, 16), 2).toString(10);
 			String[] temp = mnemonicFormat.split(",");
 			String[] temp1 = temp[1].split("\\(");
-			decDecompose = decDecompose + " "
-					+ temp1[0];
+			decDecompose = decDecompose + " " + temp1[0];
 		}
 		if (value == null) {
 			mnemonicFormat = "Instruction not known";
