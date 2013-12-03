@@ -463,12 +463,15 @@ public class disassembler {
 					+ new BigInteger(binary.substring(16, 32), 2).toString(10);
 		} else if (func.getType() == 'x') {
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
+			String rsS = mapping.register.get(rsT);
 			if (value.charAt(value.length() - 1) == 'u') {
 				int immT = Integer.parseInt(binary.substring(16, 32), 2);
+				mnemonicFormat = value + " " + rsS + " " + immT;
+			} else {
+				short immT = (short) Integer.parseInt(binary.substring(16, 32), 2);
+				mnemonicFormat = value + " " + rsS + " " + immT;
 			}
-			short immT = (short) Integer.parseInt(binary.substring(16, 32), 2);
-			String rsS = mapping.register.get(rsT);
-			mnemonicFormat = value + " " + rsS + " " + immT;
+			
 			hexDecompose = hexDecompose + " "
 					+ new BigInteger(binary.substring(6, 11), 2).toString(16);
 			hexDecompose = hexDecompose + " "
@@ -492,11 +495,11 @@ public class disassembler {
 			if (value.charAt(value.length() - 1) == 'u') {
 				int addressT = Integer.parseInt(binary.substring(16, 32), 2);
 
-				mnemonicFormat = value + " " + rtS + " " + addressT;
+				mnemonicFormat = value + " " + rtS + ", " + addressT + "(" + rsS + ")";
 			} else {
 				short addressT = (short) Integer.parseInt(
 						binary.substring(16, 32), 2);
-				mnemonicFormat = value + " " + rtS + " " + addressT + "(" + rsS + ")";
+				mnemonicFormat = value + " " + rtS + ", " + addressT + "(" + rsS + ")";
 			}
 
 			hexDecompose = hexDecompose + " "
@@ -515,14 +518,20 @@ public class disassembler {
 			decDecompose = decDecompose + " "
 					+ new BigInteger(binary.substring(16, 32), 2).toString(10);
 		} else if (func.getType() == 'z') {
+			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
 			int ftT = Integer.parseInt(binary.substring(11, 16), 2);
+			String rsS = mapping.register.get(rsT);
+			String ftS = mapping.register.get(ftT);
 			if (value.charAt(value.length() - 1) == 'u') {
 				int addressT = Integer.parseInt(binary.substring(16, 32), 2);
+
+				mnemonicFormat = value + " " + ftS + ", " + addressT + "(" + rsS + ")";
+			} else {
+				short addressT = (short) Integer.parseInt(
+						binary.substring(16, 32), 2);
+				mnemonicFormat = value + " " + ftS + ", " + addressT + "(" + rsS + ")";
 			}
-			short addressT = (short) Integer.parseInt(binary.substring(16, 32),
-					2);
-			String ftS = mapping.register.get(ftT);
-			mnemonicFormat = value + " " + ftS + " " + addressT;
+
 			hexDecompose = hexDecompose + " "
 					+ new BigInteger(binary.substring(6, 11), 2).toString(16);
 			hexDecompose = hexDecompose + " "
