@@ -65,7 +65,6 @@ public class FileParser {
 		System.out.println(instructions.get(i).getInput() + "        " +  instructions.get(i).getHexDecomposed());
 	    }else{
 		System.out.println(String.format("%s %8.2s %20s %21s %22s", instructions.get(i).getInput(), instructions.get(i).getFormat(), instructions.get(i).getHexDecomposed(), instructions.get(i).getDecDecomposed(), instructions.get(i).getMnemonicFormat()));
-
 	    }
 	}
     }

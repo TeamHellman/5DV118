@@ -189,12 +189,12 @@ public class disassembler {
 				if (value.charAt(value.length() - 1) == 'u') {
 					int immediate = Integer.parseInt(binary.substring(16, 32),
 							2);
-					mnemonicFormat = value + " " + rsS + ", " + rtS + ", "
+					mnemonicFormat = value + " " + rtS + ", " + rsS + ", "
 							+ immediate;
 				} else {
 					short immediate = (short) Integer.parseInt(
 						binary.substring(16, 32), 2);
-					mnemonicFormat = value + " " + rsS + ", " + rtS + ", "
+					mnemonicFormat = value + " " + rtS + ", " + rsS + ", "
 							+ immediate;
 				}
 
@@ -252,8 +252,9 @@ public class disassembler {
 					+ new BigInteger(binary.substring(6, 11), 2).toString(10);
 			decDecompose = decDecompose + " "
 					+ new BigInteger(binary.substring(11, 16), 2).toString(10);
+			String[] temp = mnemonicFormat.split(",");
 			decDecompose = decDecompose + " "
-					+ new BigInteger(binary.substring(16, 32), 2).toString(10);
+					+ temp[1];
 		} else if (func.getType() == 'j') {
 			int where = Integer.parseInt(binary.substring(6, 32), 2);
 			mnemonicFormat = value + " " + where;
@@ -485,7 +486,6 @@ public class disassembler {
 					.parseInt(binary.substring(16, 32), 2);
 				mnemonicFormat = value + " " + rsS + ", " + labelT;
 			}
-
 			hexDecompose = hexDecompose + " "
 					+ new BigInteger(binary.substring(6, 11), 2).toString(16);
 			hexDecompose = hexDecompose + " "
@@ -499,8 +499,9 @@ public class disassembler {
 					+ new BigInteger(binary.substring(6, 11), 2).toString(10);
 			decDecompose = decDecompose + " "
 					+ new BigInteger(binary.substring(11, 16), 2).toString(10);
+			String[] temp = mnemonicFormat.split(",");
 			decDecompose = decDecompose + " "
-					+ new BigInteger(binary.substring(16, 32), 2).toString(10);
+					+ temp[1];
 		} else if (func.getType() == 'x') {
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
 			String rsS = mapping.register.get(rsT);
@@ -525,8 +526,9 @@ public class disassembler {
 					+ new BigInteger(binary.substring(6, 11), 2).toString(10);
 			decDecompose = decDecompose + " "
 					+ new BigInteger(binary.substring(11, 16), 2).toString(10);
+			String[] temp = mnemonicFormat.split(",");
 			decDecompose = decDecompose + " "
-					+ new BigInteger(binary.substring(16, 32), 2).toString(10);
+					+ temp[1];
 		} else if (func.getType() == 'y') {
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
 			int rtT = Integer.parseInt(binary.substring(11, 16), 2);
@@ -555,8 +557,10 @@ public class disassembler {
 					+ new BigInteger(binary.substring(6, 11), 2).toString(10);
 			decDecompose = decDecompose + " "
 					+ new BigInteger(binary.substring(11, 16), 2).toString(10);
+			String[] temp = mnemonicFormat.split(",");
+			String[] temp1 = temp[1].split("\\(");
 			decDecompose = decDecompose + " "
-					+ new BigInteger(binary.substring(16, 32), 2).toString(10);
+					+ temp1[0];
 		} else if (func.getType() == 'z') {
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);
 			int ftT = Integer.parseInt(binary.substring(11, 16), 2);
@@ -585,8 +589,10 @@ public class disassembler {
 					+ new BigInteger(binary.substring(6, 11), 2).toString(10);
 			decDecompose = decDecompose + " "
 					+ new BigInteger(binary.substring(11, 16), 2).toString(10);
+			String[] temp = mnemonicFormat.split(",");
+			String[] temp1 = temp[1].split("\\(");
 			decDecompose = decDecompose + " "
-					+ new BigInteger(binary.substring(16, 32), 2).toString(10);
+					+ temp1[0];
 		}
 		if (value == null) {
 			mnemonicFormat = "Instruction not known";
