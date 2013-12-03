@@ -260,7 +260,7 @@ public class disassembler {
 					+ new BigInteger(binary.substring(21, 26), 2).toString(10);
 			decDecompose = decDecompose + " "
 					+ new BigInteger(binary.substring(26, 32), 2).toString(10);
-		} else if (func.getType() == 'h') {
+		} else if (func.getType() == 'u') {
 			int rtT = Integer.parseInt(binary.substring(11, 16), 2);
 			String rtS = mapping.register.get(rtT);
 			if (value.charAt(value.length() - 1) == 'u') {
