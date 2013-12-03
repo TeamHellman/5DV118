@@ -28,7 +28,7 @@ public class disassembler {
 			value = func.getOpcode();
 			if(mapping.shamt.containsValue(value) && Integer.parseInt(binary.substring(21, 26), 2) != 0){
 			    MIPS.setFormat('X');
-				MIPS.setHexDecomposed("Partial legality - shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
+				MIPS.setHexDecomposed("Partial legality - "+ value +", shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
 				return -1;
 			}
 
@@ -45,7 +45,7 @@ public class disassembler {
 			value = func.getOpcode();
 			if(mapping.shamt.containsValue(value) && Integer.parseInt(binary.substring(21, 26), 2) != 0){
 			    MIPS.setFormat('X');
-				MIPS.setHexDecomposed("Partial legality - shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
+				MIPS.setHexDecomposed("Partial legality - "+ value +" shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
 				return -1;
 			}
 		} else if (opcode == 0) {
@@ -54,14 +54,14 @@ public class disassembler {
 			func = mapping.funct2.get(id);
 			if (func == null) {
 				MIPS.setFormat('X');
-				MIPS.setHexDecomposed("Partial legality - level 1, opcode = 0, funct = "
+				MIPS.setHexDecomposed("Partial legality - level 1, OP = 0, funct = "
 						+ id + ".");
 				return -1;
 			}
 			value = func.getOpcode();
 			if(mapping.shamt.containsValue(value) && Integer.parseInt(binary.substring(21, 26), 2) != 0){
 			    MIPS.setFormat('X');
-				MIPS.setHexDecomposed("Partial legality - shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
+				MIPS.setHexDecomposed("Partial legality - OP = "+ value +", shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
 				return -1;
 			}
 			if (id == 1) {
@@ -77,7 +77,7 @@ public class disassembler {
 				value = func.getOpcode();
 				if(mapping.shamt.containsValue(value) && Integer.parseInt(binary.substring(21, 26), 2) != 0){
 				    MIPS.setFormat('X');
-					MIPS.setHexDecomposed("Partial legality - shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
+					MIPS.setHexDecomposed("Partial legality - OP = "+ value +", shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
 					return -1;
 				}
 			}
@@ -103,7 +103,7 @@ public class disassembler {
 			value = func.getOpcode();
 			if(mapping.shamt.containsValue(value) && Integer.parseInt(binary.substring(21, 26), 2) != 0){
 			    MIPS.setFormat('X');
-				MIPS.setHexDecomposed("Partial legality - shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
+				MIPS.setHexDecomposed("Partial legality - OP = "+ value +", shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
 				return -1;
 			}
 			if (id == 0 || id == 2 || id == 4 || id == 6) {
