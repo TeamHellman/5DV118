@@ -107,6 +107,7 @@ public class Mappings {
 		funct2.put(51, new opCode("tltu", 'p'));
 		funct2.put(52, new opCode("teq", 'p'));
 		funct2.put(54, new opCode("tne", 'p'));
+		funct2.put(100, new opCode("nop", 'l'));
 
 
 		funct3.put(0, new opCode("add.", 'r'));

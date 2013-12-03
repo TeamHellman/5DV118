@@ -60,6 +60,13 @@ public class disassembler {
 					return -1;
 				}
 				value = func.getOpcode();
+			} if (id == 0) {
+				int shamt = Integer.parseInt(binary.substring(21, 26), 2);
+				if(shamt == 0) {
+					func = mapping.funct2.get(100);
+					value = "nop";
+					MIPS.setFormat('l');
+				}
 			}
 		} else if ((opcode >= 16) && (opcode <= 19)) {
 			int z = opcode - 16;
