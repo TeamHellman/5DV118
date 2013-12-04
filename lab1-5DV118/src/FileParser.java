@@ -75,6 +75,12 @@ public class FileParser {
 	    }
 	}
     }
+    /**
+     * Converts a hexadecimal to a string holding a binary representation
+     * of the number. 
+     * @param s
+     * @return binary representation of the given hex-string.
+     */
     static String hexToBin(String s) {
 	return new BigInteger(s, 16).toString(2);
     }
