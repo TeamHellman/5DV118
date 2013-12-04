@@ -1,5 +1,12 @@
 import java.math.BigInteger;
-
+/**
+ * The disassembler takes a MIPS instruction and a String with 32-characters
+ * that is the binary representaion of the instruction. It then decodes the 
+ * binary representation and puts all information of the instruction in the 
+ * attached instruction. 
+ * @author Ivana och Marcus
+ *
+ */
 public class disassembler {
 
 	public int parser(String binary, Instruction MIPS) {
@@ -14,7 +21,8 @@ public class disassembler {
 		int id = 0;
 
 		int opcode = Integer.parseInt(binary.substring(0, 6), 2);
-
+		//Sets the instruction and checks if its a known instruction and for
+		//partial legality.
 		if (opcode == 28) {
 			id = Integer.parseInt(binary.substring(26, 32), 2);
 
@@ -156,7 +164,8 @@ public class disassembler {
 		hexDecompose = "[0x"
 				+ new BigInteger(binary.substring(0, 6), 2).toString(16);
 		MIPS.setFormat(func.getType());
-
+		// Decodes the info in the binary string in different ways depending
+		// on format-type and then adds all info to the given instruction.
 		if (func.getType() == 'r' || func.getType() == 'i') {
 
 			int rsT = Integer.parseInt(binary.substring(6, 11), 2);

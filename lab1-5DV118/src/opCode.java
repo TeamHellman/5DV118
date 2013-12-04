@@ -1,4 +1,9 @@
-
+/**
+ * The opCode-object contains a String holding the name of the opcode and
+ * the format of the opcode. 
+ * @author oi11ejn, oi11hms, c11log
+ *
+ */
 public class opCode {
     String opcode;
     char format = ' ';

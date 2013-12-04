@@ -1,5 +1,13 @@
 import java.util.HashMap;
-
+/**
+ * The mappings-class contains hash maps that has a number associated to a 
+ * MIPS-instruction. There is also a hash map that contains the name of all
+ * the registers and on what number they are. Last but not least there is a 
+ * hash map that contains all instructions that requires shamt = 0.
+ * 
+ * @author oi11ejn, oi11hms, c11log
+ *
+ */
 
 public class Mappings {
 	public HashMap<Integer, opCode> opCode = new HashMap<Integer, opCode>();

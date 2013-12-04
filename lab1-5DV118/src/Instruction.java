@@ -1,4 +1,9 @@
-
+/**
+ * An instruction-object contains information about a MIPS-instruction. 
+ * 
+ * @author oi11ejn, oi11hms, c11log
+ *
+ */
 public class Instruction {
 	public String input;
 	public String hex;

@@ -6,13 +6,20 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 
 /**
- * Class that parse a file
- *
- * @author
+ * Class that parse a file containing one MIPS-instruction 
+ * per line. It can be in either decimal or hexadecimal, hexadecimal
+ * instructions starts with "0x" to indicate that the following instruction
+ * is in hexadecimal. 
+ * 
+ * @author oi11ejn, oi11hms, c11log
  *
  */
 public class FileParser {
-
+	
+	/**
+	 * The FileParser contains an ArrayList of instructions that contains
+	 * the parsed instructions from the input file. 
+	 */
     static ArrayList<Instruction> instructions = new ArrayList<Instruction>();
 
     public static void main(String[] args) {
@@ -24,7 +31,7 @@ public class FileParser {
 		String strLine;
 		while ((strLine = reader.readLine()) != null) {
 		    if (strLine.length() > 0) {
-
+		    
 			if (strLine.substring(0, 2)
 				.equalsIgnoreCase("0x")) {
 			    Instruction MIPS = new Instruction();
@@ -58,7 +65,7 @@ public class FileParser {
 	}
 
 	System.out.println(String.format("%1.5s%16s%19s%22s%23s", "Input", "Format", "HEX Decomposed", "DEC Decomposed", "Mnemonic" ));
-	// Print
+	// Print the instructions parsed from the file
 	for(int i=0; i < instructions.size(); i++){
 
 	    if(instructions.get(i).getFormat() == 'X'){
