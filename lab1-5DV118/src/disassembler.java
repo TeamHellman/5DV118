@@ -21,7 +21,7 @@ public class disassembler {
 			func = mapping.funct1.get(id);
 			if (func == null) {
 				MIPS.setFormat('X');
-				MIPS.setHexDecomposed("Partial legality - level 1, opcode = 28, funct = "
+				MIPS.setHexDecomposed("Partial legality, opcode = 28, funct = "
 						+ id + ".");
 				return -1;
 			}
@@ -38,7 +38,7 @@ public class disassembler {
 			func = mapping.rt.get(id);
 			if (func == null) {
 				MIPS.setFormat('X');
-				MIPS.setHexDecomposed("Partial legality - level 1, opcode = 1, rt = "
+				MIPS.setHexDecomposed("Partial legality, opcode = 1, rt = "
 						+ id + ".");
 				return -1;
 			}
@@ -54,14 +54,14 @@ public class disassembler {
 			func = mapping.funct2.get(id);
 			if (func == null) {
 				MIPS.setFormat('X');
-				MIPS.setHexDecomposed("Partial legality - level 1, OP = 0, funct = "
+				MIPS.setHexDecomposed("Partial legality, OP = 0, funct = "
 						+ id + ".");
 				return -1;
 			}
 			value = func.getOpcode();
 			if(mapping.shamt.containsValue(value) && Integer.parseInt(binary.substring(21, 26), 2) != 0){
 			    MIPS.setFormat('X');
-				MIPS.setHexDecomposed("Partial legality - OP = "+ value +", shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
+				MIPS.setHexDecomposed("Partial legality, OP = "+ value +", shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
 				return -1;
 			}
 			if (id == 1) {
@@ -70,14 +70,14 @@ public class disassembler {
 				func = mapping.mov1.get(id);
 				if (func == null) {
 					MIPS.setFormat('X');
-					MIPS.setHexDecomposed("Partial legality - level 2, funct = "
+					MIPS.setHexDecomposed("Partial legality, funct = "
 							+ id + ".");
 					return -1;
 				}
 				value = func.getOpcode();
 				if(mapping.shamt.containsValue(value) && Integer.parseInt(binary.substring(21, 26), 2) != 0){
 				    MIPS.setFormat('X');
-					MIPS.setHexDecomposed("Partial legality - OP = "+ value +", shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
+					MIPS.setHexDecomposed("Partial legality, OP = "+ value +", shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
 					return -1;
 				}
 			}
@@ -96,21 +96,21 @@ public class disassembler {
 			func = mapping.rs.get(id);
 			if (func == null) {
 				MIPS.setFormat('X');
-				MIPS.setHexDecomposed("Partial legality - level 1, opcode = "
+				MIPS.setHexDecomposed("Partial legality, opcode = "
 						+ opcode + ", rs = " + id + ".");
 				return -1;
 			}
 			value = func.getOpcode();
 			if(mapping.shamt.containsValue(value) && Integer.parseInt(binary.substring(21, 26), 2) != 0){
 			    MIPS.setFormat('X');
-				MIPS.setHexDecomposed("Partial legality - OP = "+ value +", shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
+				MIPS.setHexDecomposed("Partial legality, OP = "+ value +", shamt = "+Integer.parseInt(binary.substring(21, 26), 2)+"." );
 				return -1;
 			}
 			if (id == 0 || id == 2 || id == 4 || id == 6) {
 				func = mapping.rs.get(id);
 				if (func == null) {
 					MIPS.setFormat('X');
-					MIPS.setHexDecomposed("partial legality - level 2, opcode = "
+					MIPS.setHexDecomposed("Partial legality, opcode = "
 							+ opcode + ", funct = " + id + ".");
 					return -1;
 				}
@@ -124,7 +124,7 @@ public class disassembler {
 				func = mapping.funct1.get(id);
 				if (func == null) {
 					MIPS.setFormat('X');
-					MIPS.setHexDecomposed("partial legality - level 2, opcode = "
+					MIPS.setHexDecomposed("partial legality, opcode = "
 							+ opcode + ", funct = " + id + ".");
 					return -1;
 				}
@@ -138,7 +138,7 @@ public class disassembler {
 			}
 			if (id == 17) {
 				MIPS.setFormat('X');
-				MIPS.setHexDecomposed("partial legality - level 2, opcode = "
+				MIPS.setHexDecomposed("Partial legality, opcode = "
 						+ opcode + ", funct = " + id + ".");
 				return -1;
 			}
