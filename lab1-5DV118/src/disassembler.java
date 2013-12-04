@@ -1,10 +1,10 @@
 import java.math.BigInteger;
 /**
  * The disassembler takes a MIPS instruction and a String with 32-characters
- * that is the binary representaion of the instruction. It then decodes the 
- * binary representation and puts all information of the instruction in the 
- * attached instruction. 
- * @author Ivana och Marcus
+ * that is the binary representaion of the instruction. It then decodes the
+ * binary representation and puts all information of the instruction in the
+ * attached instruction.
+ * @author oi11ejn, oi11hms, c11log
  *
  */
 public class disassembler {
